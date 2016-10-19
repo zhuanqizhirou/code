@@ -299,14 +299,15 @@ public class CodeBuilderServiceImpl implements CodeBuilderService {
 			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".service.impl",data.getModel().getModel()+"ServiceImpl.java", serviceImpl);
 			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".web",data.getModel().getModel()+"Controller.java", controller);
 			
-//			//页面部分
-//			CodeSaveTool.saveTemplates(project.getPath(), project.getModel().getModelL(),"list.html", list);
-//			CodeSaveTool.saveTemplates(project.getPath(), project.getModel().getModelL(),"form.html", form);
-//			CodeSaveTool.saveTemplates(project.getPath(), project.getModel().getModelL(),"details.html", details);
-//			//js部分
-//			CodeSaveTool.saveJs(project.getPath(), project.getModel().getModelL(),"list.js", listjs);
-//			CodeSaveTool.saveJs(project.getPath(), project.getModel().getModelL(),"form.js", formjs);
-//			CodeSaveTool.saveJs(project.getPath(), project.getModel().getModelL(),"details.js", detailsjs);
+			//页面部分
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"list.html", list);
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"form.html", form);
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"details.html", details);
+			
+			//js部分
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"list.js", listjs);
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"form.js", formjs);
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"details.js", detailsjs);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
