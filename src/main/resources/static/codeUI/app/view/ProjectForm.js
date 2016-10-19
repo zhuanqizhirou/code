@@ -77,6 +77,17 @@ Ext.define('Code.view.ProjectForm', {
             }
         },
         {
+            xtype: 'combobox',
+            fieldLabel: '代码模板',
+            name: 'template',
+            displayField: 'name',
+            store: 'TemplateStore',
+            valueField: 'code',
+            bind: {
+                value: '{model.template}'
+            }
+        },
+        {
             xtype: 'textfield',
             fieldLabel: '路径',
             name: 'path',

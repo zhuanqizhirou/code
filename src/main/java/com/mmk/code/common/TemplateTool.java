@@ -38,7 +38,7 @@ public class TemplateTool {
 		context.put(key, value);
 	}
 	
-	public String getString(){
+	public String getResult(){
 		StringWriter writer = new StringWriter();   
         t.merge(context, writer);   
         return writer.toString();

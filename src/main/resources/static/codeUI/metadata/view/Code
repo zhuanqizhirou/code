@@ -777,6 +777,31 @@
                             ]
                         },
                         {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "name",
+                                "fieldLabel": "代码模板",
+                                "layout|flex": null,
+                                "name": "template",
+                                "store": "TemplateStore",
+                                "value": [
+                                    "{model.template}"
+                                ],
+                                "valueField": "code",
+                                "width": 300
+                            },
+                            "name": "MyComboBox7",
+                            "configAlternates": {
+                                "value": "binding"
+                            },
+                            "designerId": "3c957108-8244-4193-a52e-8838583514af"
+                        },
+                        {
                             "type": "Ext.form.field.Text",
                             "reference": {
                                 "name": "items",
@@ -794,7 +819,7 @@
                                 "value": [
                                     "{project.path}"
                                 ],
-                                "width": 600
+                                "width": 300
                             },
                             "name": "MyTextField2",
                             "configAlternates": {

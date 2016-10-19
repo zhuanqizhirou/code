@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,9 +41,12 @@ public class CodeBuilderController {
 
 	@RequestMapping("/code/builde")
 	@ResponseBody
-	public String codeBuilder(@RequestBody BuildData project){
-		saveData(project);
-		return builder.buildAllCode(project);
+	public String codeBuilder(@RequestBody BuildData data){
+		
+		saveData(data);
+		String template = StringUtils.trimToEmpty(data.getProject().getTemplate());
+		
+		return builder.buildAllCode(template,data);
 	}
 	
 	/**
@@ -66,26 +70,30 @@ public class CodeBuilderController {
 	}
 	
 	@RequestMapping("/code/preview")
-	public Map<String,Object> codePreview(@RequestBody BuildData project){
-		String modelcode = builder.buildModel(project);
-		String condition = builder.buildCondition(project);
-		String repository = builder.buildRepository(project);
-		String dao = builder.buildDao(project);
-		String daoImpl = builder.buildDaoImpl(project);
-		String service = builder.buildService(project);
-		String serviceImpl = builder.buildServiceImpl(project);
-		String controller = builder.buildController(project);
+	public Map<String,Object> codePreview(@RequestBody BuildData data){
+		
+		String template = StringUtils.trimToEmpty(data.getProject().getTemplate());
+		
+		
+		String modelcode = builder.buildModel(template,data);
+		String condition = builder.buildCondition(template,data);
+		String repository = builder.buildRepository(template,data);
+		String dao = builder.buildDao(template,data);
+		String daoImpl = builder.buildDaoImpl(template,data);
+		String service = builder.buildService(template,data);
+		String serviceImpl = builder.buildServiceImpl(template,data);
+		String controller = builder.buildController(template,data);
 		
 		//页面部分生成
 		
-		String list = builder.buildList(project);
-		String form = builder.buildForm(project);
-		String details = builder.buildDetails(project);
+		String list = builder.buildList(template,data);
+		String form = builder.buildForm(template,data);
+		String details = builder.buildDetails(template,data);
 		
 		//JS部分
-		String listjs = builder.buildListJs(project);
-		String formjs = builder.buildFormJs(project);
-		String detailsjs = builder.buildDetailsJs(project);
+		String listjs = builder.buildListJs(template,data);
+		String formjs = builder.buildFormJs(template,data);
+		String detailsjs = builder.buildDetailsJs(template,data);
 		
 		HttpSession session = SessionUtils.getSession();
 		

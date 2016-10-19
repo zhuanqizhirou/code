@@ -12,7 +12,7 @@ public interface CodeBuilderService {
 	 * @param fieldList
 	 * @return
 	 */
-	String buildModel(BuildData data);
+	String buildModel(String template,BuildData data);
 
 	/**
 	 * 生成查询使用的Condition类
@@ -20,7 +20,7 @@ public interface CodeBuilderService {
 	 * @param project
 	 * @return
 	 */
-	String buildCondition(BuildData data);
+	String buildCondition(String template,BuildData data);
 
 	/**
 	 * 根据模型生成Repository代码
@@ -29,11 +29,11 @@ public interface CodeBuilderService {
 	 * @param fieldList
 	 * @return
 	 */
-	String buildRepository(BuildData data);
+	String buildRepository(String template,BuildData data);
 
-	String buildDao(BuildData data);
+	String buildDao(String template,BuildData data);
 
-	String buildDaoImpl(BuildData data);
+	String buildDaoImpl(String template,BuildData data);
 
 	/**
 	 * 根据模型生成Service代码
@@ -42,9 +42,9 @@ public interface CodeBuilderService {
 	 * @param fieldList
 	 * @return
 	 */
-	String buildService(BuildData data);
+	String buildService(String template,BuildData data);
 
-	String buildServiceImpl(BuildData data);
+	String buildServiceImpl(String template,BuildData data);
 
 	/**
 	 * 根据模型生成Controller代码
@@ -53,14 +53,9 @@ public interface CodeBuilderService {
 	 * @param fieldList
 	 * @return
 	 */
-	String buildController(BuildData data);
+	String buildController(String template,BuildData data);
 
-	/**
-	 * 构建所有代码
-	 * 
-	 * @param project
-	 */
-	String buildAllCode(BuildData data);
+	
 
 	/**
 	 * 构建页面list代码
@@ -68,7 +63,7 @@ public interface CodeBuilderService {
 	 * @param project
 	 * @return 生成的代码
 	 */
-	String buildList(BuildData data);
+	String buildList(String template,BuildData data);
 
 	/**
 	 * 构建form页面
@@ -76,7 +71,7 @@ public interface CodeBuilderService {
 	 * @param project
 	 * @return 生成的代码
 	 */
-	String buildForm(BuildData data);
+	String buildForm(String template,BuildData data);
 
 	/**
 	 * 构建details页面
@@ -84,28 +79,28 @@ public interface CodeBuilderService {
 	 * @param project
 	 * @return 生成的代码
 	 */
-	String buildDetails(BuildData data);
+	String buildDetails(String template,BuildData data);
 
 	/**
 	 * 生成list页面上的js
 	 * 
 	 * @return
 	 */
-	String buildListJs(BuildData data);
+	String buildListJs(String template,BuildData data);
 
 	/**
 	 * 生成form页面上的js
 	 * 
 	 * @return
 	 */
-	String buildFormJs(BuildData data);
+	String buildFormJs(String template,BuildData data);
 
 	/**
 	 * 生成details页面上的js
 	 * 
 	 * @return
 	 */
-	String buildDetailsJs(BuildData data);
+	String buildDetailsJs(String template,BuildData data);
 
 	/**
 	 * 给代码加点颜色
@@ -115,4 +110,11 @@ public interface CodeBuilderService {
 	 */
 	String addIFrame(String code);
 
+	
+	/**
+	 * 构建所有代码
+	 * 
+	 * @param project
+	 */
+	String buildAllCode(String template,BuildData data);
 }

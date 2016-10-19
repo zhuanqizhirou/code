@@ -332,8 +332,20 @@ Ext.define('Code.view.Code', {
                             }
                         },
                         {
+                            xtype: 'combobox',
+                            width: 300,
+                            fieldLabel: '代码模板',
+                            name: 'template',
+                            displayField: 'name',
+                            store: 'TemplateStore',
+                            valueField: 'code',
+                            bind: {
+                                value: '{model.template}'
+                            }
+                        },
+                        {
                             xtype: 'textfield',
-                            width: 600,
+                            width: 300,
                             fieldLabel: '项目目录',
                             msgTarget: 'under',
                             name: 'path',

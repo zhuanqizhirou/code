@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
@@ -17,92 +18,7 @@ import com.mmk.code.core.service.CodeBuilderService;
 
 @Service
 public class CodeBuilderServiceImpl implements CodeBuilderService {
-
-	@Override
-	public String buildModel(BuildData data) {
-		Map<String, Object> importList = modelImport(data.getFieldList());
-
-		TemplateTool tool = new TemplateTool("templates/code/model.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		tool.put("importList", importList);
-		return tool.getString();
-	}
 	
-	@Override
-	public String buildCondition(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/condition.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-
-	@Override
-	public String buildRepository(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/repository.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		String pk ="Long";
-		pk = getPKType(data.getFieldList());
-		tool.put("PK", pk);
-		return tool.getString();
-	}
-
-	@Override
-	public String buildDao(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/dao.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("modelName", PropertyNameTools.firstLetterLowerCase(data.getModel().getModel()));
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-
-	@Override
-	public String buildDaoImpl(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/daoImpl.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		tool.put("modelName", PropertyNameTools.firstLetterLowerCase(data.getModel().getModel()));
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-	
-	@Override
-	public String buildService(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/service.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		String pk ="Long";
-		pk = getPKType(data.getFieldList());
-		tool.put("PK", pk);
-		return tool.getString();
-	}
-	
-	@Override
-	public String buildServiceImpl(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/serviceImpl.html");
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		String pk ="Long";
-		pk = getPKType(data.getFieldList());
-		tool.put("PK", pk);
-		return tool.getString();
-	}
-
 	/**
 	 * 获得主键类型
 	 * @param list
@@ -150,40 +66,227 @@ public class CodeBuilderServiceImpl implements CodeBuilderService {
 		}
 		return fieldUp;
 	}
+	
+	private Map<String, Object> modelImport(List<Field> fieldList) {
+		Map<String, Object> result = new LinkedHashMap<String, Object>();
+		for (Field field : fieldList) {
+			if ("String".equals(field.getType()) || "Long".equals(field.getType()) || "Integer".equals(field.getType())
+					|| "Float".equals(field.getType()) || "Double".equals(field.getType())) 
+			{
+				continue;
+			}
+			if("Date".equals(field.getType())){
+				if("Date".equals(field.getType())){
+					result.put("Date","import java.util.Date;");
+					result.put("Temporal","import javax.persistence.Temporal;");
+					result.put("TemporalType","import javax.persistence.TemporalType;");
+				}
+			}
+			
+		}
+		return result;
+	}
+	
+	private String templatePath(String template,String type,String name){
+		StringBuilder result = new StringBuilder("templates/");
+		if(StringUtils.isNotBlank(template)){
+			result.append(template);
+			result.append("/");
+		}
+		result.append(type);
+		result.append("/");
+		result.append(name);
+		result.append(".html");
+		return result.toString();
+	}
+
 
 	@Override
-	public String buildController(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/code/controller.html");
+	public String buildModel(String template,BuildData data) {
+		Map<String, Object> importList = modelImport(data.getFieldList());
+
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","model"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		tool.put("importList", importList);
+		return tool.getResult();
+	}
+	
+	@Override
+	public String buildCondition(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","condition"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+
+	@Override
+	public String buildRepository(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","repository"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		String pk ="Long";
+		pk = getPKType(data.getFieldList());
+		tool.put("PK", pk);
+		return tool.getResult();
+	}
+
+	@Override
+	public String buildDao(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","dao"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("modelName", PropertyNameTools.firstLetterLowerCase(data.getModel().getModel()));
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+
+	@Override
+	public String buildDaoImpl(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","daoImpl"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		tool.put("modelName", PropertyNameTools.firstLetterLowerCase(data.getModel().getModel()));
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+	
+	@Override
+	public String buildService(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","service"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		String pk ="Long";
+		pk = getPKType(data.getFieldList());
+		tool.put("PK", pk);
+		return tool.getResult();
+	}
+	
+	@Override
+	public String buildServiceImpl(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","serviceImpl"));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		String pk ="Long";
+		pk = getPKType(data.getFieldList());
+		tool.put("PK", pk);
+		return tool.getResult();
+	}
+
+	
+	@Override
+	public String buildController(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"code","controller"));
 		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
 		tool.put("project", data.getProject());
 		tool.put("model", data.getModel());
 		tool.put("fieldList", data.getFieldList());
 		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
+		return tool.getResult();
+	}
+	
+	@Override
+	public String buildList(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"page","list"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("pkField", getPKField(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+	
+	@Override
+	public String buildForm(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"page","form"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("pkField", getPKField(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+
+	@Override
+	public String buildDetails(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"page","details"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("pkField", getPKField(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+
+	@Override
+	public String buildListJs(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"js","list"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+	@Override
+	public String buildFormJs(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"js","form"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
+	}
+	@Override
+	public String buildDetailsJs(String template,BuildData data) {
+		TemplateTool tool = new TemplateTool(templatePath(template,"js","details"));
+		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
+		tool.put("project", data.getProject());
+		tool.put("model", data.getModel());
+		tool.put("fieldList", data.getFieldList());
+		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
+		return tool.getResult();
 	}
 
 
 	@Override
-	public String buildAllCode(BuildData data) {
-		String modelcode =buildModel(data);
-		String condition = buildCondition(data);
-		String repository = buildRepository(data);
-		String dao = buildDao(data);
-		String daoImpl = buildDaoImpl(data);
-		String service = buildService(data);
-		String serviceImpl = buildServiceImpl(data);
-		String controller = buildController(data);
+	public String buildAllCode(String template,BuildData data) {
+		String modelcode =buildModel(template,data);
+		String condition = buildCondition(template,data);
+		String repository = buildRepository(template,data);
+		String dao = buildDao(template,data);
+		String daoImpl = buildDaoImpl(template,data);
+		String service = buildService(template,data);
+		String serviceImpl = buildServiceImpl(template,data);
+		String controller = buildController(template,data);
 		
 		//页面部分生成
 		
-		String list = buildList(data);
-		String form = buildForm(data);
-		String details = buildDetails(data);
+		String list = buildList(template,data);
+		String form = buildForm(template,data);
+		String details = buildDetails(template,data);
 		
 		//生成js部分
-		String listjs = buildListJs(data);
-		String formjs = buildFormJs(data);
-		String detailsjs = buildDetailsJs(data);
+		String listjs = buildListJs(template,data);
+		String formjs = buildFormJs(template,data);
+		String detailsjs = buildDetailsJs(template,data);
 		
 		//保存代码到磁盘
 		try {
@@ -212,100 +315,13 @@ public class CodeBuilderServiceImpl implements CodeBuilderService {
 		return "代码生成成功";
 	}
 
-	private Map<String, Object> modelImport(List<Field> fieldList) {
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		for (Field field : fieldList) {
-			if ("String".equals(field.getType()) || "Long".equals(field.getType()) || "Integer".equals(field.getType())
-					|| "Float".equals(field.getType()) || "Double".equals(field.getType())) 
-			{
-				continue;
-			}
-			if("Date".equals(field.getType())){
-				if("Date".equals(field.getType())){
-					result.put("Date","import java.util.Date;");
-					result.put("Temporal","import javax.persistence.Temporal;");
-					result.put("TemporalType","import javax.persistence.TemporalType;");
-				}
-			}
-			
-		}
-		return result;
-	}
+	
 
 	@Override
 	public String addIFrame(String code) {
 		StringBuilder html = new StringBuilder();
 		html.append("<iframe src='/code/preview/"+code+"'></iframe>");
 		return html.toString();
-	}
-
-	@Override
-	public String buildList(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/page/list.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("pkField", getPKField(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-
-	
-
-	@Override
-	public String buildForm(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/page/form.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("pkField", getPKField(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-
-	@Override
-	public String buildDetails(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/page/details.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("pkField", getPKField(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-
-	@Override
-	public String buildListJs(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/js/list.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-	@Override
-	public String buildFormJs(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/js/form.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
-	}
-	@Override
-	public String buildDetailsJs(BuildData data) {
-		TemplateTool tool = new TemplateTool("templates/js/details.html");
-		tool.put("pkFieldUp", getPKFieldUp(data.getFieldList()));
-		tool.put("project", data.getProject());
-		tool.put("model", data.getModel());
-		tool.put("fieldList", data.getFieldList());
-		tool.put("date",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
-		return tool.getString();
 	}
 
 }

@@ -33,7 +33,8 @@ Ext.application({
         'InputTypeStore',
         'ValidateStore',
         'MatchStore',
-        'ProjectStore'
+        'ProjectStore',
+        'TemplateStore'
     ],
     views: [
         'Code',

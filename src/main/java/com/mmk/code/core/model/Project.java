@@ -42,6 +42,12 @@ public class Project {
      */
     @Column(name="database_name")
     private String databaseName;
+    
+    /**
+     * 要使用的代码模板
+     */
+    @Column(name="template")
+    private String template;
 
     /**
      * 目录地址
@@ -152,6 +158,12 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+	public String getTemplate() {
+		return template;
+	}
+	public void setTemplate(String template) {
+		this.template = template;
+	}
 
 
 }
