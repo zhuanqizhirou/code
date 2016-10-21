@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="edge" />
 
@@ -16,41 +15,29 @@
 <script type="text/javascript" src="http://g.yiqingo.com/easyui/jquery.easyui.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://g.yiqingo.com/easyui/locale/easyui-lang-zh_CN.js" charset="utf-8"></script>
 
-<title>管理后台</title>
+<title>${model.comment}</title>
 <script type="text/javascript" src="/js/extJs.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/${model.modelL}/list.js"></script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'north',border:false" style="height: 30px; overflow: hidden;background-color: #fff">
         <form id="searchForm">
             <table>
                 <tr>
-                      <th>用户名：</th>
-                      <td>
-                        <input type="text" name="username"/>
-                      </td>
-                      <th>功能地址：</th>
-                      <td>
-                        <input type="text" name="url" th:value="${operationLogCondition} ? ${operationLogCondition.functionName} :''"/>
-                      </td>
-                      <th>时间：</th>
-                      <td>
-                        <input class="easyui-datetimebox" name="optimeStart" data-options="editable:false"/>至
-                        <input class="easyui-datetimebox" name="optimeEnd" data-options="editable:false"/>
-                      </td>
-                      <td>
-                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a>
-                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
-                      </td>
+#foreach( $field in $fieldList )
+#if($field.matchType != "none")
+	<th>${field.comment}：</th>
+	<td>
+	<input type="text" name="${field.field}" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}} :''"/>
+	</td>
+#end
+#end
                 </tr>
             </table>
         </form>
     </div>
-    <div data-options="region:'center',border:true,title:'操作日志列表'" >
+    <div data-options="region:'center',border:true,title:'${model.comment}'" >
         <table id="dataGrid" data-options="fit:true,border:false"></table>
-    </div>
-    <div id="toolbar" style="display: none;">
-    <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
     </div>
 </body>
 </html>

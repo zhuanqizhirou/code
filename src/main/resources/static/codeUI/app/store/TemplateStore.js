@@ -27,6 +27,7 @@ Ext.define('Code.store.TemplateStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'TemplateStore',
+            autoLoad: true,
             proxy: {
                 type: 'ajax',
                 url: '/template.json',

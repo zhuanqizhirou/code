@@ -151,7 +151,7 @@
                             "userConfig": {
                                 "fn": "onButtonClick",
                                 "implHandler": [
-                                    " var grid = button.up(\"grid\");",
+                                    "var grid = button.up(\"grid\");",
                                     "var selection = grid.getSelection();",
                                     "if(selection.length>0){",
                                     "    var model = selection[0];",

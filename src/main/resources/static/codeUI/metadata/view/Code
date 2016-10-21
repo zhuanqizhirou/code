@@ -790,7 +790,7 @@
                                 "name": "template",
                                 "store": "TemplateStore",
                                 "value": [
-                                    "{model.template}"
+                                    "{project.template}"
                                 ],
                                 "valueField": "code",
                                 "width": 300

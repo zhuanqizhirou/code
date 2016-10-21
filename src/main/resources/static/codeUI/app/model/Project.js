@@ -42,6 +42,9 @@ Ext.define('Code.model.Project', {
         },
         {
             name: 'description'
+        },
+        {
+            name: 'template'
         }
     ]
 });

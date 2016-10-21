@@ -340,7 +340,7 @@ Ext.define('Code.view.Code', {
                             store: 'TemplateStore',
                             valueField: 'code',
                             bind: {
-                                value: '{model.template}'
+                                value: '{project.template}'
                             }
                         },
                         {

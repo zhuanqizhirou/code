@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,13 @@ import com.mmk.code.common.TemplateTool;
 import com.mmk.code.core.condition.BuildData;
 import com.mmk.code.core.model.Field;
 import com.mmk.code.core.service.CodeBuilderService;
+import com.mmk.code.core.service.FieldService;
 
 @Service
 public class CodeBuilderServiceImpl implements CodeBuilderService {
+	
+	@Resource
+	private FieldService fieldService;
 	
 	/**
 	 * 获得主键类型
