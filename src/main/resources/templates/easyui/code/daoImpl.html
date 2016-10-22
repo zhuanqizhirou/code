@@ -72,6 +72,15 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}","%"+${model.modelL}Condition.get${field.fieldUp}());
         }
+#elseif($field.matchType == 'dateRange')
+        if(condition.get${field.fieldUp}Begin()!=null){
+            sb.append(" and ${field.columnName} >= : ${field.columnName}Begin");
+            params.put("${field.columnName}Begin",condition.get${field.fieldUp}Begin());
+        }
+        if(condition.get${field.fieldUp}End()!=null){
+            sb.append(" and ${field.columnName} < ${field.columnName}End ");
+            params.put(${field.columnName}End,condition.get${field.fieldUp}End());
+        }
 #end
 #else
 #if($field.matchType != 'none')
@@ -150,6 +159,15 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
         if(StringUtils.isNotBlank(condition.get${field.fieldUp}())){
             sb.append(" and ${field.columnName} like ?$!{velocityCount} ");
             params.put($!{velocityCount},"%"+condition.get${field.fieldUp}());
+        }
+#elseif($field.matchType == 'dateRange')
+        if(condition.get${field.fieldUp}Begin()!=null){
+            sb.append(" and ${field.columnName} >= ?$!{velocityCount} ");
+            params.put($!{velocityCount},condition.get${field.fieldUp}Begin());
+        }
+        if(condition.get${field.fieldUp}End()!=null){
+            sb.append(" and ${field.columnName} >= ?$!{velocityCount} ");
+            params.put($!{velocityCount},condition.get${field.fieldUp}End());
         }
 #end
 #else

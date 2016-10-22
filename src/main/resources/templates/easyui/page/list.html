@@ -26,10 +26,20 @@
                 <tr>
 #foreach( $field in $fieldList )
 #if($field.matchType != "none")
+#if($field.matchType == "dateRange")
+                    <th>${field.comment}：</th>
+                      <td>
+                        <input type="text" class="easyui-datebox"  name="${field.field}Begin" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}Begin} :''"/>
+                      </td>
+                       <td>
+                        <input type="text" class="easyui-datebox"  name="${field.field}End" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}End} :''"/>
+                      </td>
+#else
                     <th>${field.comment}：</th>
                       <td>
                         <input type="text" name="${field.field}" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}} :''"/>
                       </td>
+#end                      
 #end
 #end
                       <td>
