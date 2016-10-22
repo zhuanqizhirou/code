@@ -52,29 +52,29 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
         Map<String,Object> params = new HashMap<String,Object>();
 #foreach($field in $fieldList)
 #if($field.type=="String")
-#if($field.match == 'any')
+#if($field.matchType == 'any')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}","%"+${model.modelL}Condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'eq')
+#elseif($field.matchType == 'eq')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} = :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}());
         }
-#elseif($field.match == 'left')
+#elseif($field.matchType == 'left')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'right')
+#elseif($field.matchType == 'right')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}","%"+${model.modelL}Condition.get${field.fieldUp}());
         }
 #end
 #else
-#if($field.match != 'none')
+#if($field.matchType != 'none')
         if(${model.modelL}Condition.get${field.fieldUp}()!=null){
             sb.append(" and model.${field.field} = :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}());
@@ -91,29 +91,29 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
         Map<String,Object> params = new HashMap<String,Object>();
 #foreach($field in $fieldList)
 #if($field.type=="String")
-#if($field.match == 'any')
+#if($field.matchType == 'any')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}","%"+${model.modelL}Condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'eq')
+#elseif($field.matchType == 'eq')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} = :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}());
         }
-#elseif($field.match == 'left')
+#elseif($field.matchType == 'left')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'right')
+#elseif($field.matchType == 'right')
         if(StringUtils.isNotBlank(${model.modelL}Condition.get${field.fieldUp}())){
             sb.append(" and model.${field.field} like :${field.field} ");
             params.put("${field.field}","%"+${model.modelL}Condition.get${field.fieldUp}());
         }
 #end
 #else
-#if($field.match != 'none')
+#if($field.matchType != 'none')
         if(${model.modelL}Condition.get${field.fieldUp}()!=null){
             sb.append(" and model.${field.field} = :${field.field} ");
             params.put("${field.field}",${model.modelL}Condition.get${field.fieldUp}());
@@ -131,29 +131,29 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
         Map<Integer,Object> params = new HashMap<Integer,Object>();
 #foreach($field in $fieldList)
 #if($field.type=="String")
-#if($field.match == 'any')
+#if($field.matchType == 'any')
         if(StringUtils.isNotBlank(condition.get${field.fieldUp}())){
             sb.append(" and ${field.columnName} like ?$!{velocityCount} ");
             params.put($!{velocityCount},"%"+condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'eq')
+#elseif($field.matchType == 'eq')
         if(StringUtils.isNotBlank(condition.get${field.fieldUp}())){
             sb.append(" and ${field.columnName} = ?$!{velocityCount} ");
             params.put($!{velocityCount},condition.get${field.fieldUp}());
         }
-#elseif($field.match == 'left')
+#elseif($field.matchType == 'left')
         if(StringUtils.isNotBlank(condition.get${field.fieldUp}())){
             sb.append(" and ${field.columnName} like ?$!{velocityCount} ");
             params.put($!{velocityCount},condition.get${field.fieldUp}()+"%");
         }
-#elseif($field.match == 'right')
+#elseif($field.matchType == 'right')
         if(StringUtils.isNotBlank(condition.get${field.fieldUp}())){
             sb.append(" and ${field.columnName} like ?$!{velocityCount} ");
             params.put($!{velocityCount},"%"+condition.get${field.fieldUp}());
         }
 #end
 #else
-#if($field.match != 'none')
+#if($field.matchType != 'none')
         if(condition.get${field.fieldUp}()!=null){
             sb.append(" and ${field.columnName} = ?$!{velocityCount} ");
             params.put($!{velocityCount},condition.get${field.fieldUp}());
