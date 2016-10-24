@@ -26,6 +26,7 @@
                 <tr>
 #foreach( $field in $fieldList )
 #if($field.matchType != "none")
+
 #if($field.matchType == "dateRange")
                     <th>${field.comment}：</th>
                       <td>
@@ -39,7 +40,8 @@
                       <td>
                         <input type="text" name="${field.field}" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}} :''"/>
                       </td>
-#end                      
+#end    
+                  
 #end
 #end
                       <td>
