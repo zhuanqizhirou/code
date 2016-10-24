@@ -31,8 +31,6 @@ import ${model.packageName}.condition.${model.model}Condition;
 *@Title: ${model.model}Controller
 *@Description: ${model.comment} 的web控制层
 *@author ${model.author}
-*@version 1.0
-*@date ${date}
 */
 @RestController
 public class ${model.model}Controller extends BaseController {
@@ -47,7 +45,7 @@ public class ${model.model}Controller extends BaseController {
     @RequestMapping("/${model.modelL}/list")
     public ModelAndView list(){
         log.info("${model.comment}列表查询");
-        ModelAndView modelAndView = new ModelAndView("/${model.modelL}/list");
+        ModelAndView modelAndView = new ModelAndView("${model.modelL}/list");
         return  modelAndView;
     }
     
@@ -89,7 +87,7 @@ public class ${model.model}Controller extends BaseController {
     public ModelAndView editPage(${model.model} ${model.modelL}){
         log.info("${model.comment}编辑页面");
         ${model.modelL} = ${model.modelL}Service.find(${model.modelL}.get${pkFieldUp}());
-        ModelAndView modelAndView = new ModelAndView("/${model.modelL}/form");
+        ModelAndView modelAndView = new ModelAndView("${model.modelL}/form");
         modelAndView.addObject("${model.modelL}", ${model.modelL});
         return modelAndView ;
     }
