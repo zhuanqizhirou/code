@@ -17,7 +17,6 @@ public class ${model.model}Condition extends ${model.model}{
 
 #foreach($field in $fieldList)
 #if(${field.matchType}=='dateRange')
-    @
     private ${field.type} ${field.field}Begin;
     private ${field.type} ${field.field}End;
 #end
