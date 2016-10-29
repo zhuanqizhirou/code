@@ -74,7 +74,7 @@ public class ${model.model}Controller extends BaseController {
      */
     @RequestMapping("/${model.modelL}/add")
     public ModelAndView addPage(){
-        ModelAndView modelAndView = new ModelAndView("/${model.modelL}/form");
+        ModelAndView modelAndView = new ModelAndView("${model.modelL}/form");
         modelAndView.addObject("${model.modelL}", new ${model.model}());
         return modelAndView;
     }
