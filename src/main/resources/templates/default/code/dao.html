@@ -1,75 +1,71 @@
-/*
- * 
- *  ${model.model}Dao 创建于 ${date} 版权归作者和作者当前组织所有
- */
-package ${model.packageName}.dao;
+package ${project.group}.${project.module}.dao;
 
 import java.util.List;
 import java.util.Map;
-import com.mmk.gene.dao.SpringDataQueryDao;
+import com.echin.base.dao.SpringDataQueryDao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import ${model.packageName}.condition.${model.model}Condition;
-import ${model.packageName}.model.${model.model};
+import ${project.group}.${project.module}.condition.${project.model.model}Condition;
+import ${project.group}.${project.module}.model.${project.model.model};
 /**
-* ${model.model}Dao:${model.comment} 数据持久层接口
-* @author ${model.author}
-* @version 1.0
+*@Title: ${project.model.model}Dao
+*@Description: ${project.model.comment} 数据持久层接口
+*@author code generator
+*@version 1.0
+*@date ${date}
 * Modified By
 * Modified Date
 */
-public interface ${model.model}Dao extends SpringDataQueryDao<${model.model}>{
+public interface ${project.model.model}Dao extends SpringDataQueryDao<${project.model.model}>{
     
     /**
      * 分页查询相关信息，根据传入的bean类对象和分页对象page取得查询结果集List
-     * @param ${model.modelL} 查询类
-     * @param pageable 传入的分页对象
-     * @return 符合条件的查询结果集
-     * @author ${model.author}
-     * 
+     * @param model ${project.model.model}类
+     * @param page 传入的分页对象
+     * @return Page<${project.model.model}> 查询的结果集
+     * @author code generator
+     * @date ${date}
      * 
      */
-    Page<${model.model}> list(${model.model}Condition ${model.modelL},Pageable pageable);
+    Page<${project.model.model}> list(${project.model.model}Condition ${project.model.modelL},Pageable pageable);
     /**
      * 不分页查询相关信息，根据传入的model类对象取得查询结果集List
-     * @param ${model.modelL} 查询类
-     * @return 符合条件的查询结果集
-     * @author ${model.author}
-     * 
+     * @param bean ${project.model.model}类
+     * @return List<${project.model.model}> 查询的结果集
+     * @author code generator
+     * @date ${date}
      */
-    List<${model.model}> list(${model.model}Condition ${model.modelL});
+    List<${project.model.model}> list(${project.model.model}Condition ${project.model.modelL});
     /**
      * 使用sql查询，并以map和分页的形式进行返回数据结果
-     * @param ${model.modelL} ${model.model}类
-     * @param pageable 传入的分页对象
-     * @return 符合条件的查询结果集
-     * @author ${model.author}
-     * 
+     * @param model ${project.model.model}类
+     * @param page 传入的分页对象
+     * @return Page<${project.model.model}> 查询的结果集
+     * @author code generator
+     * @date ${date}
      * 
      */
-    Page<Map<String,Object>> listBySql(${model.model}Condition ${model.modelL},Pageable pageable);
+    Page< Map<String,Object>> listBySql(${project.model.model}Condition ${project.model.modelL},Pageable pageable);
+    
     /**
      * 根据给定的字段和属性值，获得符合条件的第一个结果
-     * @param field ${model.model} 中的某个字段
-     * @param value 字段对应的值
-     * @return 返回符合条件的结果，如果没有返回null
-     * @author ${model.author}
-     * 
+     * @param field ${project.model.model} 中的某个字段
+     * @return ${project.model.model} 返回符合条件的结果，如果没有返回null
+     * @author code generator
+     * @date ${date}
      * 
      */
-    ${model.model} findBy(String field,Object value);
+    ${project.model.model} findBy(String field,Object value);
     
     /**
      * 根据给定的字段和属性值，获得符合条件的所有结果
-     * @param field ${model.model} 中的某个字段
-     * @param value 字段对应的值
-     * @return 返回符合条件的所有结果
-     * @author ${model.author}
-     * 
+     * @param field ${project.model.model} 中的某个字段
+     * @return List<${project.model.model}> 返回符合条件的所有结果
+     * @author code generator
+     * @date ${date}
      * 
      */
-    List<${model.model}> findAllBy(String field,Object value);
-    
+    List<${project.model.model}> findAllBy(String field,Object value);
     
 
 }

@@ -1,8 +1,4 @@
-/*
- * 
- *  ${model.model} 创建于 ${date} 版权归作者和作者当前组织所有
- */
-package ${model.packageName}.model;
+package ${project.group}.${project.module}.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,22 +11,23 @@ $importList.get($key)
 #end
 
 /**
-* ${model.model}: ${model.comment} 数据领域模型
-* ${date}
-*@author ${model.author}
+*@Title: ${project.model.model}
+*@Description: ${project.model.comment} 数据领域模型
+*@author code generator
 *@version 1.0
+*@date ${date}
 */
 @Entity
-@Table(name="${model.tableName}")
-public class ${model.model} {
-#foreach($field in $fieldList)
+@Table(name = "${project.model.table}")
+public class ${project.model.model} {
+#foreach($field in $project.fieldList)
 #if(${field.isPk}=='Y')
     /**
      * ${field.comment}
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="${field.columnName}")
+    @Column(name="${field.column}",length=${field.length})
     private ${field.type} ${field.field};
 #else
     /**
@@ -39,13 +36,13 @@ public class ${model.model} {
 #if(${field.type} == "Date")
     @Temporal(TemporalType.TIMESTAMP)   
 #end
-    @Column(name="${field.columnName}")
+    @Column(name="${field.column}" #if(${field.length}&&${field.length}<2147483640),length=${field.length}#end)
     private ${field.type} ${field.field};
 #end
 
 #end
 
-#foreach($field in $fieldList)
+#foreach($field in $project.fieldList)
     /** 
 	* @return ${field.field} ：${field.comment}
 	*/
@@ -53,12 +50,10 @@ public class ${model.model} {
         return ${field.field};
     }
     /** 
-    *@param ${field.field} 设置${field.comment} 
+    * @param ${field.field} 设置${field.comment} 
     */
     public void set${field.fieldUp}(${field.type} ${field.field}) {
         this.${field.field} = ${field.field};
     }
-
 #end
-
 }
