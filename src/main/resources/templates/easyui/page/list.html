@@ -35,6 +35,14 @@
                        <td>
                         <input type="text" class="easyui-datebox"  name="${field.field}End" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}End} :''"/>
                       </td>
+#elseif($field.matchType == "numberRange")
+                        <th>${field.comment}：</th>
+                      <td>
+                        <input type="text" class="easyui-numberbox"  name="${field.field}Begin" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}Begin} :''"/>
+                      </td>
+                       <td>
+                       到： <input type="text" class="easyui-numberbox"  name="${field.field}End" th:value="${${model.modelL}Condition} ? ${${model.modelL}Condition.${field.field}End} :''"/>
+                      </td>
 #else
                     <th>${field.comment}：</th>
                       <td>

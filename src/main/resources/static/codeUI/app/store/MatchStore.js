@@ -49,6 +49,10 @@ Ext.define('Code.store.MatchStore', {
                 {
                     type: 'dateRange',
                     value: '日期范围'
+                },
+                {
+                    type: 'numberRange',
+                    value: '数量范围'
                 }
             ],
             fields: [

@@ -20,10 +20,41 @@ public class ${model.model}Condition extends ${model.model}{
     private ${field.type} ${field.field}Begin;
     private ${field.type} ${field.field}End;
 #end
+#if(${field.matchType}=='numberRange')
+    private ${field.type} ${field.field}Begin;
+    private ${field.type} ${field.field}End;
+#end
 #end
 
 #foreach($field in $fieldList)
 #if(${field.matchType}=='dateRange')
+    /** 
+    * @return ${field.field}Begin ：${field.comment}
+    */
+    public ${field.type} get${field.fieldUp}Begin() {
+        return ${field.field}Begin;
+    }
+    /** 
+    *@param ${field.field}Begin 设置${field.comment} 开始
+    */
+    public void set${field.fieldUp}Begin(${field.type} ${field.field}Begin) {
+        this.${field.field}Begin = ${field.field}Begin;
+    }
+    
+     /** 
+    * @return ${field.field}End ：${field.comment}
+    */
+    public ${field.type} get${field.fieldUp}End() {
+        return ${field.field}End;
+    }
+    /** 
+    *@param ${field.field}End 设置${field.comment} 开始
+    */
+    public void set${field.fieldUp}End(${field.type} ${field.field}End) {
+        this.${field.field}End = ${field.field}End;
+    }
+#end
+#if(${field.matchType}=='numberRange')
     /** 
     * @return ${field.field}Begin ：${field.comment}
     */

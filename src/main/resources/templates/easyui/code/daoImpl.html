@@ -81,6 +81,16 @@ public class ${model.model}DaoImpl extends SpringDataQueryDaoImpl<${model.model}
             sb.append(" and ${field.columnName} < ${field.columnName}End ");
             params.put(${field.columnName}End,condition.get${field.fieldUp}End());
         }
+#elseif($field.matchType == 'numberRange')
+        if(condition.get${field.fieldUp}Begin()!=null){
+            sb.append(" and ${field.columnName} >= : ${field.columnName}Begin");
+            params.put("${field.columnName}Begin",condition.get${field.fieldUp}Begin());
+        }
+        if(condition.get${field.fieldUp}End()!=null){
+            sb.append(" and ${field.columnName} < ${field.columnName}End ");
+            params.put(${field.columnName}End,condition.get${field.fieldUp}End());
+        }
+        
 #end
 #else
 #if($field.matchType != 'none')
