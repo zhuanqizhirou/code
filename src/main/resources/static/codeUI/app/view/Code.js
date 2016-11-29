@@ -28,12 +28,12 @@ Ext.define('Code.view.Code', {
         'Ext.form.field.Number',
         'Ext.grid.plugin.CellEditing',
         'Ext.form.field.Checkbox',
+        'Ext.toolbar.Toolbar',
         'Ext.tree.Panel',
         'Ext.tree.View',
         'Ext.form.Panel',
         'Ext.form.field.TextArea',
         'Ext.form.field.Hidden',
-        'Ext.toolbar.Toolbar',
         'Ext.form.field.Display',
         'Ext.form.field.HtmlEditor'
     ],
@@ -224,6 +224,21 @@ Ext.define('Code.view.Code', {
                             plugins: [
                                 {
                                     ptype: 'cellediting'
+                                }
+                            ],
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'button',
+                                            text: '数据字典导出',
+                                            listeners: {
+                                                click: 'onButtonClick'
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }

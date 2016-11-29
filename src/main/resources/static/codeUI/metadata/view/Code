@@ -522,6 +522,55 @@
                                     },
                                     "name": "MyColumn5",
                                     "designerId": "185bb043-b73e-4664-8789-109bbade8033"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Toolbar",
+                                    "reference": {
+                                        "name": "dockedItems",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dock": "top"
+                                    },
+                                    "name": "MyToolbar3",
+                                    "designerId": "6947a40a-a07d-426a-8948-b9a72ad51f98",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.button.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout|flex": null,
+                                                "text": "数据字典导出"
+                                            },
+                                            "name": "MyButton10",
+                                            "designerId": "24c60153-bf48-4f86-8655-07972bbee22d",
+                                            "cn": [
+                                                {
+                                                    "type": "viewcontrollereventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onButtonClick",
+                                                        "implHandler": [
+                                                            "Ext.Msg.alert(\"尚未实现\",\"尚未实现\");"
+                                                        ],
+                                                        "name": "click",
+                                                        "scope": "me"
+                                                    },
+                                                    "name": "onButtonClick",
+                                                    "designerId": "93521c5f-b298-4784-a2a5-23723a57e5d7"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }

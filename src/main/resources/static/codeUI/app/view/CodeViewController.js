@@ -63,6 +63,10 @@ Ext.define('Code.view.CodeViewController', {
 
     },
 
+    onButtonClick: function(button, e, eOpts) {
+        Ext.Msg.alert("尚未实现","尚未实现");
+    },
+
     loadColumn: function(dataview, record, item, index, e, eOpts) {
 
         var model = this.getViewModel();
