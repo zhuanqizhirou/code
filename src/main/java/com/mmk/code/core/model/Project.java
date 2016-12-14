@@ -65,8 +65,8 @@ public class Project {
     /**
      * 模块包
      */
-    @Column(name="module_name" ,columnDefinition="COMMENT '模块包'")
-    private String moduleName;
+    @Column(name="module_package" ,columnDefinition="COMMENT '模块包'")
+    private String modulePackage;
 
     /**
      * 项目描述
@@ -171,12 +171,11 @@ public class Project {
 	public void setTemplate(String template) {
 		this.template = template;
 	}
-	public String getModuleName() {
-		return moduleName;
+	public String getModulePackage() {
+		return modulePackage;
 	}
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
+	public void setModulePackage(String modulePackage) {
+		this.modulePackage = modulePackage;
 	}
-
-
+	
 }

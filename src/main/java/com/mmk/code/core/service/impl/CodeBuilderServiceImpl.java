@@ -1,6 +1,7 @@
 package com.mmk.code.core.service.impl;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -296,24 +297,24 @@ public class CodeBuilderServiceImpl implements CodeBuilderService {
 		
 		//保存代码到磁盘
 		try {
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".model",data.getModel().getModel()+".java", modelcode);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".condition",data.getModel().getModel()+"Condition.java", condition);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".dao",data.getModel().getModel()+"Repository.java", repository);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".dao",data.getModel().getModel()+"Dao.java", dao);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".dao.impl",data.getModel().getModel()+"DaoImpl.java", daoImpl);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".service",data.getModel().getModel()+"Service.java", service);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".service.impl",data.getModel().getModel()+"ServiceImpl.java", serviceImpl);
-			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+".web",data.getModel().getModel()+"Controller.java", controller);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".model",data.getModel().getModel()+".java", modelcode);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".condition",data.getModel().getModel()+"Condition.java", condition);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".dao",data.getModel().getModel()+"Repository.java", repository);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".dao",data.getModel().getModel()+"Dao.java", dao);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".dao.impl",data.getModel().getModel()+"DaoImpl.java", daoImpl);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".service",data.getModel().getModel()+"Service.java", service);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".service.impl",data.getModel().getModel()+"ServiceImpl.java", serviceImpl);
+			CodeSaveTool.saveCode(data.getProject().getPath(), data.getModel().getPackageName()+"."+data.getModel().getModulePackage()+".web",data.getModel().getModel()+"Controller.java", controller);
 			
 			//页面部分
-			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"list.html", list);
-			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"form.html", form);
-			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModelL(),"details.html", details);
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"list.html", list);
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"form.html", form);
+			CodeSaveTool.saveTemplates(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"details.html", details);
 			
 			//js部分
-			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"list.js", listjs);
-			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"form.js", formjs);
-			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModelL(),"details.js", detailsjs);
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"list.js", listjs);
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"form.js", formjs);
+			CodeSaveTool.saveJs(data.getProject().getPath(), data.getModel().getModulePackage()+"."+ data.getModel().getModelL(),"details.js", detailsjs);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

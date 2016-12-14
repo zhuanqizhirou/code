@@ -57,6 +57,12 @@ Ext.define('Code.view.Project', {
         },
         {
             xtype: 'gridcolumn',
+            width: 200,
+            dataIndex: 'modulePackage',
+            text: 'Module包'
+        },
+        {
+            xtype: 'gridcolumn',
             width: 300,
             dataIndex: 'path',
             text: '存储地址'

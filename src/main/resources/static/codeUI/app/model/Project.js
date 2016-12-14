@@ -41,6 +41,9 @@ Ext.define('Code.model.Project', {
             name: 'groupPackage'
         },
         {
+            name: 'modulePackage'
+        },
+        {
             name: 'description'
         },
         {

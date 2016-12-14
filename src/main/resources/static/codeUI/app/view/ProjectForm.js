@@ -104,6 +104,14 @@ Ext.define('Code.view.ProjectForm', {
             }
         },
         {
+            xtype: 'textfield',
+            fieldLabel: 'Module包',
+            name: 'modulePackage',
+            bind: {
+                value: '{model.modulePackage}'
+            }
+        },
+        {
             xtype: 'htmleditor',
             fieldLabel: '项目描述',
             name: 'description',

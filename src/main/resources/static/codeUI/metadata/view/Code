@@ -634,6 +634,9 @@
                             "        if(!object.packageName){",
                             "            object.packageName=model.get(\"project\").groupPackage;",
                             "        }",
+                            "        if(!object.modulePackage){",
+                            "            object.modulePackage=model.get(\"project\").modulePackage;",
+                            "        }",
                             "        model.set(\"model\",object);",
                             "",
                             "        var store = Ext.getStore(\"ColumnStore\");",
@@ -720,31 +723,9 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fieldLabel": "中文说明",
-                                "layout|flex": null,
-                                "name": "comment",
-                                "value": [
-                                    "{project.comment}"
-                                ],
-                                "width": 300
-                            },
-                            "name": "MyTextField7",
-                            "configAlternates": {
-                                "value": "binding"
-                            },
-                            "designerId": "035e10de-53d3-4096-b5ca-d70ebd999a0d"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
                                 "allowBlank": false,
                                 "blankText": "项目包不可以为空",
-                                "fieldLabel": "项目包名",
+                                "fieldLabel": "GroupPackage",
                                 "layout|flex": null,
                                 "msgTarget": "under",
                                 "name": "groupPackage",
@@ -759,6 +740,32 @@
                                 "value": "binding"
                             },
                             "designerId": "2e4385a0-3f8d-464e-a14f-b8290a0033ca"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowBlank": false,
+                                "blankText": "项目包不可以为空",
+                                "fieldLabel": "ModulePackage",
+                                "layout|flex": null,
+                                "msgTarget": "under",
+                                "name": "modulePackage",
+                                "validateBlank": true,
+                                "value": [
+                                    "{project.modulePackage}"
+                                ],
+                                "width": 300
+                            },
+                            "name": "MyTextField17",
+                            "configAlternates": {
+                                "value": "binding"
+                            },
+                            "designerId": "a348fffc-0b28-405c-aa00-29556c8df809"
                         }
                     ]
                 },
@@ -777,6 +784,32 @@
                     "name": "MyContainer",
                     "designerId": "878bf99e-cc55-4358-a437-9749b0f697f7",
                     "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowBlank": false,
+                                "blankText": "项目路径不可以为空",
+                                "fieldLabel": "项目目录",
+                                "layout|flex": null,
+                                "msgTarget": "under",
+                                "name": "path",
+                                "validateBlank": true,
+                                "value": [
+                                    "{project.path}"
+                                ],
+                                "width": 300
+                            },
+                            "name": "MyTextField2",
+                            "configAlternates": {
+                                "value": "binding"
+                            },
+                            "designerId": "c96cefbb-15e6-41cd-9c62-90f0a979e90e"
+                        },
                         {
                             "type": "Ext.form.field.ComboBox",
                             "reference": {
@@ -849,32 +882,6 @@
                                 "value": "binding"
                             },
                             "designerId": "3c957108-8244-4193-a52e-8838583514af"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "allowBlank": false,
-                                "blankText": "项目路径不可以为空",
-                                "fieldLabel": "项目目录",
-                                "layout|flex": null,
-                                "msgTarget": "under",
-                                "name": "path",
-                                "validateBlank": true,
-                                "value": [
-                                    "{project.path}"
-                                ],
-                                "width": 300
-                            },
-                            "name": "MyTextField2",
-                            "configAlternates": {
-                                "value": "binding"
-                            },
-                            "designerId": "c96cefbb-15e6-41cd-9c62-90f0a979e90e"
                         }
                     ]
                 },
@@ -894,6 +901,28 @@
                     "designerId": "736b9950-1f4f-4920-bcf7-d828cb5b0320",
                     "cn": [
                         {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "中文说明",
+                                "layout|flex": null,
+                                "name": "comment",
+                                "value": [
+                                    "{project.comment}"
+                                ],
+                                "width": 300
+                            },
+                            "name": "MyTextField7",
+                            "configAlternates": {
+                                "value": "binding"
+                            },
+                            "designerId": "035e10de-53d3-4096-b5ca-d70ebd999a0d"
+                        },
+                        {
                             "type": "Ext.form.field.TextArea",
                             "reference": {
                                 "name": "items",
@@ -902,11 +931,12 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fieldLabel": "项目说明",
+                                "layout|flex": null,
                                 "name": "description",
                                 "value": [
                                     "{project.description}"
                                 ],
-                                "width": 900
+                                "width": 600
                             },
                             "name": "MyTextArea",
                             "configAlternates": {
@@ -1349,7 +1379,7 @@
                             "userConfig": {
                                 "allowBlank": false,
                                 "blankText": "必填项",
-                                "fieldLabel": "package",
+                                "fieldLabel": "GroupPackage",
                                 "labelAlign": "right",
                                 "labelWidth": null,
                                 "layout|flex": null,
@@ -1364,6 +1394,32 @@
                                 "value": "binding"
                             },
                             "designerId": "33e9b3e6-8e06-4182-94ed-3a10e624a43e"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowBlank": false,
+                                "blankText": "必填项",
+                                "fieldLabel": "ModulePackage",
+                                "labelAlign": "right",
+                                "labelWidth": null,
+                                "layout|flex": null,
+                                "name": "modulePackage",
+                                "value": [
+                                    "{model.modulePackage}"
+                                ],
+                                "width": null
+                            },
+                            "name": "MyTextField12",
+                            "configAlternates": {
+                                "value": "binding"
+                            },
+                            "designerId": "2e05d5d7-dc3a-48e7-b659-9a8ab3fac9a7"
                         },
                         {
                             "type": "Ext.form.field.Text",

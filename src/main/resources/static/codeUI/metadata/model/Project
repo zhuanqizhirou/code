@@ -98,6 +98,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "modulePackage"
+            },
+            "name": "MyField34",
+            "designerId": "0f6313ab-e5e3-40e7-80bf-40701b823c01"
+        },
+        {
+            "type": "Ext.data.field.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "description"
             },
             "name": "MyField29",

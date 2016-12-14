@@ -299,16 +299,7 @@ Ext.define('Code.view.Code', {
                         {
                             xtype: 'textfield',
                             width: 300,
-                            fieldLabel: '中文说明',
-                            name: 'comment',
-                            bind: {
-                                value: '{project.comment}'
-                            }
-                        },
-                        {
-                            xtype: 'textfield',
-                            width: 300,
-                            fieldLabel: '项目包名',
+                            fieldLabel: 'GroupPackage',
                             msgTarget: 'under',
                             name: 'groupPackage',
                             allowBlank: false,
@@ -316,6 +307,19 @@ Ext.define('Code.view.Code', {
                             validateBlank: true,
                             bind: {
                                 value: '{project.groupPackage}'
+                            }
+                        },
+                        {
+                            xtype: 'textfield',
+                            width: 300,
+                            fieldLabel: 'ModulePackage',
+                            msgTarget: 'under',
+                            name: 'modulePackage',
+                            allowBlank: false,
+                            blankText: '项目包不可以为空',
+                            validateBlank: true,
+                            bind: {
+                                value: '{project.modulePackage}'
                             }
                         }
                     ]
@@ -328,6 +332,19 @@ Ext.define('Code.view.Code', {
                         align: 'middle'
                     },
                     items: [
+                        {
+                            xtype: 'textfield',
+                            width: 300,
+                            fieldLabel: '项目目录',
+                            msgTarget: 'under',
+                            name: 'path',
+                            allowBlank: false,
+                            blankText: '项目路径不可以为空',
+                            validateBlank: true,
+                            bind: {
+                                value: '{project.path}'
+                            }
+                        },
                         {
                             xtype: 'combobox',
                             width: 300,
@@ -357,19 +374,6 @@ Ext.define('Code.view.Code', {
                             bind: {
                                 value: '{project.template}'
                             }
-                        },
-                        {
-                            xtype: 'textfield',
-                            width: 300,
-                            fieldLabel: '项目目录',
-                            msgTarget: 'under',
-                            name: 'path',
-                            allowBlank: false,
-                            blankText: '项目路径不可以为空',
-                            validateBlank: true,
-                            bind: {
-                                value: '{project.path}'
-                            }
                         }
                     ]
                 },
@@ -381,8 +385,17 @@ Ext.define('Code.view.Code', {
                     },
                     items: [
                         {
+                            xtype: 'textfield',
+                            width: 300,
+                            fieldLabel: '中文说明',
+                            name: 'comment',
+                            bind: {
+                                value: '{project.comment}'
+                            }
+                        },
+                        {
                             xtype: 'textareafield',
-                            width: 900,
+                            width: 600,
                             fieldLabel: '项目说明',
                             name: 'description',
                             bind: {
@@ -493,13 +506,24 @@ Ext.define('Code.view.Code', {
                         },
                         {
                             xtype: 'textfield',
-                            fieldLabel: 'package',
+                            fieldLabel: 'GroupPackage',
                             labelAlign: 'right',
                             name: 'packageName',
                             allowBlank: false,
                             blankText: '必填项',
                             bind: {
                                 value: '{model.packageName}'
+                            }
+                        },
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'ModulePackage',
+                            labelAlign: 'right',
+                            name: 'modulePackage',
+                            allowBlank: false,
+                            blankText: '必填项',
+                            bind: {
+                                value: '{model.modulePackage}'
                             }
                         },
                         {

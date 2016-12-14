@@ -116,6 +116,7 @@ public class ModelController{
 		tableComment.put("author", SessionUtils.getSession().getAttribute("username"));
 		if(model != null){
 			tableComment.put("packageName", model.getPackageName());
+			tableComment.put("modulePackage", model.getModulePackage());
 			tableComment.put("model", model.getModel());
 			tableComment.put("comment", model.getComment());
 			tableComment.put("description", model.getDescription());

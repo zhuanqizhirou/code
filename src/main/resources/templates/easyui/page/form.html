@@ -13,7 +13,7 @@
                 return isValid;
             }
             $.ajax({
-                url: '/${model.modelL}/save',
+                url: '/${model.modulePackage}/${model.modelL}/save',
                 data: $form.serialize(),
                 success: function(result){
                     progressClose();

@@ -2,7 +2,7 @@
  * 
  *  ${model.comment}Controller 创建于 2016-10-12 11:54:23 版权归作者和作者当前组织所有
  */
-package ${model.packageName}.web;
+package ${model.packageName}.${model.modulePackage}.web;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,9 +23,9 @@ import com.mmk.common.model.GridData;
 import com.mmk.common.model.ResultMsg;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import ${model.packageName}.service.${model.model}Service;
-import ${model.packageName}.model.${model.model};
-import ${model.packageName}.condition.${model.model}Condition;
+import ${model.packageName}.${model.modulePackage}.service.${model.model}Service;
+import ${model.packageName}.${model.modulePackage}.model.${model.model};
+import ${model.packageName}.${model.modulePackage}.condition.${model.model}Condition;
 
 /**
 *@Title: ${model.model}Controller
@@ -42,10 +42,10 @@ public class ${model.model}Controller extends BaseController {
      * 跳转至列表页面
      * @return 返回页面以及页面模型
      */
-    @RequestMapping("/${model.modelL}/list")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/list")
     public ModelAndView list(){
         log.info("${model.comment}列表查询");
-        ModelAndView modelAndView = new ModelAndView("${model.modelL}/list");
+        ModelAndView modelAndView = new ModelAndView("${model.modulePackage}/${model.modelL}/list");
         return  modelAndView;
     }
     
@@ -59,7 +59,7 @@ public class ${model.model}Controller extends BaseController {
      *            分页参数
      * @return 查询所得数据
      */
-    @RequestMapping("/${model.modelL}/gridData")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/gridData")
     @ResponseBody
     public GridData<${model.model}> loadList(${model.model}Condition ${model.modelL}Condition, EasyPageable pageable){
         log.info("获取${model.comment}列表数据");
@@ -72,9 +72,9 @@ public class ${model.model}Controller extends BaseController {
      * 新增页面
      * @return 跳转到${model.comment}新增页面
      */
-    @RequestMapping("/${model.modelL}/add")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/add")
     public ModelAndView addPage(){
-        ModelAndView modelAndView = new ModelAndView("${model.modelL}/form");
+        ModelAndView modelAndView = new ModelAndView("${model.modulePackage}/${model.modelL}/form");
         modelAndView.addObject("${model.modelL}", new ${model.model}());
         return modelAndView;
     }
@@ -83,11 +83,11 @@ public class ${model.model}Controller extends BaseController {
      * 跳转到编辑页面
      * @param ${model.modelL}  跳转到编辑页面
      */ 
-    @RequestMapping("/${model.modelL}/edit")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/edit")
     public ModelAndView editPage(${model.model} ${model.modelL}){
         log.info("${model.comment}编辑页面");
         ${model.modelL} = ${model.modelL}Service.find(${model.modelL}.get${pkFieldUp}());
-        ModelAndView modelAndView = new ModelAndView("${model.modelL}/form");
+        ModelAndView modelAndView = new ModelAndView("${model.modulePackage}/${model.modelL}/form");
         modelAndView.addObject("${model.modelL}", ${model.modelL});
         return modelAndView ;
     }
@@ -98,7 +98,7 @@ public class ${model.model}Controller extends BaseController {
      * @param ${model.modelL} 要保存的数据
      * @return ${model.modelL} 保存后的数据
      */
-    @RequestMapping("/${model.modelL}/save")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/save")
     @ResponseBody
     public ResultMsg save(${model.model} ${model.modelL}){
         log.info("${model.comment}保存");
@@ -117,7 +117,7 @@ public class ${model.model}Controller extends BaseController {
      * @param ${model.modelL} 参数
      * @return 详情数据
      */ 
-    @RequestMapping("/${model.modelL}/details")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/details")
     @ResponseBody
     public ${model.model} details(${model.model} ${model.modelL}){
         log.info("${model.comment}详细信息");
@@ -130,7 +130,7 @@ public class ${model.model}Controller extends BaseController {
      * @param page ${model.modelL}
      * @return
      */
-    @RequestMapping("/${model.modelL}/delete")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/delete")
     public ResultMsg delete(${model.model} ${model.modelL}){
         log.info("${model.comment}删除");
         try {
@@ -147,7 +147,7 @@ public class ${model.model}Controller extends BaseController {
      * @param page ${model.modelL}
      * @return ture or false 如果成功返回true ,出现错误返回false
      */
-    @RequestMapping("/${model.modelL}/deleteAll")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/deleteAll")
     public boolean delete(List<${model.model}> ${model.modelL}List){
         log.info("${model.comment}批量删除");
         try {
@@ -166,7 +166,7 @@ public class ${model.model}Controller extends BaseController {
      * @param  ${field.field} 检查字段是否存在
      * @return  true or false
      */ 
-    @RequestMapping("/${model.modelL}/${field.field}/exist")
+    @RequestMapping("/${model.modulePackage}/${model.modelL}/${field.field}/exist")
     @ResponseBody
     public boolean exists${field.fieldUp}(${field.type} ${field.field}){
         log.info("检测${model.comment}是否存在  ${field.field}");

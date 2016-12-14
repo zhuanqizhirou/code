@@ -82,6 +82,9 @@ Ext.define('Code.view.CodeViewController', {
                 if(!object.packageName){
                     object.packageName=model.get("project").groupPackage;
                 }
+                if(!object.modulePackage){
+                    object.modulePackage=model.get("project").modulePackage;
+                }
                 model.set("model",object);
 
                 var store = Ext.getStore("ColumnStore");

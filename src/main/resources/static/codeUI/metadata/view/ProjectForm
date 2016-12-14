@@ -171,6 +171,26 @@
             "designerId": "f7b78ae7-941d-470b-ab1a-353efc775b49"
         },
         {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Module包",
+                "name": "modulePackage",
+                "value": [
+                    "{model.modulePackage}"
+                ]
+            },
+            "name": "MyTextField16",
+            "configAlternates": {
+                "value": "binding"
+            },
+            "designerId": "cd25f802-de97-42a2-888b-57c063f7608d"
+        },
+        {
             "type": "Ext.form.field.HtmlEditor",
             "reference": {
                 "name": "items",

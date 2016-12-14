@@ -2,7 +2,7 @@
     var dataGrid;
     $(function() {
         dataGrid = $('#dataGrid').datagrid({
-            url : '/${model.modelL}/gridData',
+            url : '/${model.modulePackage}/${model.modelL}/gridData',
             fit : true,
             striped : true,
             rownumbers : true,
@@ -52,7 +52,7 @@
             title : '添加',
             width : 500,
             height : 300,
-            href : '/${model.modelL}/add',
+            href : '/${model.modulePackage}/${model.modelL}/add',
             buttons : [ {
                 text : '添加',
                 handler : function() {
@@ -74,7 +74,7 @@
         parent.$.messager.confirm('询问', '您是否要删除${model.comment}？', function(b) {
             if (b) {
                 progressLoad();
-                    $.post('/${model.modelL}/delete', {
+                    $.post('/${model.modulePackage}/${model.modelL}/delete', {
                         id : id
                     }, function(result) {
                         if (result.success) {
@@ -98,7 +98,7 @@
             title : '编辑',
             width : 500,
             height : 300,
-            href : '/${model.modelL}/edit?id=' + id,
+            href : '/${model.modulePackage}/${model.modelL}/edit?id=' + id,
             buttons : [ {
                 text : '编辑',
                 handler : function() {

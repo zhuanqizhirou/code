@@ -93,6 +93,21 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "modulePackage",
+                "text": "Module包",
+                "width": 200
+            },
+            "name": "MyColumn20",
+            "designerId": "ff503e55-bf5e-4d8a-846d-f9974fb319af"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "dataIndex": "path",
                 "text": "存储地址",
                 "width": 300

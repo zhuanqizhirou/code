@@ -57,6 +57,12 @@ public class Model {
      */
     @Column(name="package_name")
     private String packageName;
+    
+    /**
+     * 项目包名
+     */
+    @Column(name="module_package")
+    private String modulePackage;
 
     /**
      * 作者
@@ -169,6 +175,12 @@ public class Model {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getModulePackage() {
+		return modulePackage;
+	}
+	public void setModulePackage(String modulePackage) {
+		this.modulePackage = modulePackage;
 	}
 
 
