@@ -60,6 +60,13 @@ public class Project {
      */
     @Column(name="group_package")
     private String groupPackage;
+    
+    
+    /**
+     * 模块包
+     */
+    @Column(name="module_name" ,columnDefinition="COMMENT '模块包'")
+    private String moduleName;
 
     /**
      * 项目描述
@@ -163,6 +170,12 @@ public class Project {
 	}
 	public void setTemplate(String template) {
 		this.template = template;
+	}
+	public String getModuleName() {
+		return moduleName;
+	}
+	public void setModuleName(String moduleName) {
+		this.moduleName = moduleName;
 	}
 
 

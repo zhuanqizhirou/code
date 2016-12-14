@@ -30,7 +30,7 @@ public class ${model.model} {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="${field.columnName}")
+    @Column(name="${field.columnName}" #if(${field.length}&&${field.length}<2147483640),length=${field.length}#end ,columnDefinition="COMMENT '${field.comment}'")
     private ${field.type} ${field.field};
 #else
     /**
@@ -39,7 +39,7 @@ public class ${model.model} {
 #if(${field.type} == "Date")
     @Temporal(TemporalType.TIMESTAMP)   
 #end
-    @Column(name="${field.columnName}")
+    @Column(name="${field.columnName}" #if(${field.length}&&${field.length}<2147483640),length=${field.length}#end ,columnDefinition="COMMENT '${field.comment}'")
     private ${field.type} ${field.field};
 #end
 
