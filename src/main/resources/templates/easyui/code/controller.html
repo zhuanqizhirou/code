@@ -17,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mmk.common.BaseController;
 import com.mmk.common.model.EasyPageable;
 import com.mmk.common.model.GridData;
 import com.mmk.common.model.ResultMsg;
@@ -33,7 +32,9 @@ import ${model.packageName}.${model.modulePackage}.condition.${model.model}Condi
 *@author ${model.author}
 */
 @RestController
-public class ${model.model}Controller extends BaseController {
+public class ${model.model}Controller {
+    
+    private Log log = LogFactory.getLog(this.getClass());
     
     @Resource 
     private ${model.model}Service ${model.modelL}Service;
