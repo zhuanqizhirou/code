@@ -106,6 +106,7 @@ public class ${model.model}Controller {
         try {
             ${model.modelL}Service.save(${model.modelL});
         } catch (Exception e) {
+        	log.error(e.getMessage(),e);
             return new ResultMsg(false,"${model.comment}保存失败");
         }
         return new ResultMsg(true,"${model.comment}保存成功");
