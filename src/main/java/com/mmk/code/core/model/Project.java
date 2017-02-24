@@ -65,7 +65,7 @@ public class Project {
     /**
      * 模块包
      */
-    @Column(name="module_package" ,columnDefinition="COMMENT '模块包'")
+    @Column(name="module_package")
     private String modulePackage;
 
     /**
