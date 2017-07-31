@@ -82,9 +82,9 @@ public class PropertyNameTools {
 		String[] nameSplited = base.split("_");
 		StringBuilder sb = new StringBuilder();
 		if(StringUtils.isNoneBlank(base)){
-			sb.append(nameSplited[0].toLowerCase());
+			sb.append(nameSplited[0]);
 			for (int i = 1; i < nameSplited.length; i++) {
-				sb.append(firstLetterUpperCase(nameSplited[i].toLowerCase()));
+				sb.append(firstLetterUpperCase(nameSplited[i]));
 			}
 		}
 		return sb.toString();
