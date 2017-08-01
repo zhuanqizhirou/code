@@ -47,6 +47,7 @@ public class TableServiceImpl extends BaseServiceImpl<DbTable, Long> implements 
 		for (Map<String, Object> map : columnList) {
 			map.put("type", PropertyNameTools.changeType(MapUtils.getString(map, "DATA_TYPE")));
 			map.put("field", PropertyNameTools.column2Field(MapUtils.getString(map, "columnName")));
+			map.put("columnName", MapUtils.getString(map, "columnName").toLowerCase());
 			map.put("listShow", true);
 			map.put("matchType", "none");
 			map.put("id", "");

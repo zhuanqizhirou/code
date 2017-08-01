@@ -50,7 +50,7 @@ public class TableDaoImpl extends SpringDataQueryDaoImpl<DbTable> implements Tab
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
 		sql.append(" TABLE_NAME, ");
-		sql.append(" lower(COLUMN_NAME)  columnName, ");
+		sql.append(" COLUMN_NAME  columnName, ");
 		sql.append(" DATA_TYPE , ");
 		sql.append(" CASE IS_NULLABLE WHEN 'YES' THEN 'Y' ELSE 'N' END nullable, ");
 		sql.append(" CASE COLUMN_KEY WHEN 'PRI'  THEN 'Y' ELSE 'N' END isPk, ");
