@@ -7,3 +7,25 @@
 下载，运行主类即可。
 
 记得配合gene进行使用，底层的复写的方法
+## 使用总结
+### No converter found for return value of type问题
+Add the following dependency in pom.xml and issue will be resolved:
+<dependency>
+   <groupId>com.fasterxml.jackson.core</groupId>
+   <artifactId>jackson-databind</artifactId>
+   <version>2.5.0</version>
+  </dependency>
+### 使用前提
+需要project数据库
+### 使用方法
+配置好后，访问localhost:10001,只能是localhost，不能是192.168.42.xx
+### 使用示例
+-新建项目配置：
+项目名称		trade_jd
+GroupPackage		com.puyun.shopmanage
+ModulePackage		trade
+项目目录		e:/works/shopmanage/trade_jd
+数据库		自动显示可用数据库，选择
+代码模板		qnui模板
+-选择数据库表，注释填入表名所指代的易读名称
+
