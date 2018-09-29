@@ -1,0 +1,502 @@
+-- --------------------------------------------------------
+-- 主机:                           127.0.0.1
+-- 服务器版本:                        5.7.20-log - MySQL Community Server (GPL)
+-- 服务器操作系统:                      Win64
+-- HeidiSQL 版本:                  9.5.0.5196
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- 导出 project 的数据库结构
+CREATE DATABASE IF NOT EXISTS `project` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `project`;
+
+-- 导出  表 project.db 结构
+CREATE TABLE IF NOT EXISTS `db` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `schema_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 正在导出表  project.db 的数据：0 rows
+/*!40000 ALTER TABLE `db` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db` ENABLE KEYS */;
+
+-- 导出  表 project.field 结构
+CREATE TABLE IF NOT EXISTS `field` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `column_name` varchar(255) DEFAULT NULL,
+  `comment` varchar(2550) DEFAULT NULL,
+  `exists_method` bit(1) DEFAULT NULL,
+  `field` varchar(255) DEFAULT NULL,
+  `find_all_by` bit(1) DEFAULT NULL,
+  `find_by` bit(1) DEFAULT NULL,
+  `input_type` varchar(255) DEFAULT NULL,
+  `length` bigint(20) DEFAULT NULL,
+  `list_show` bit(1) DEFAULT NULL,
+  `match_type` varchar(255) DEFAULT NULL,
+  `model_id` bigint(20) DEFAULT NULL,
+  `nullable` bit(1) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `validate` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1960 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  project.field 的数据：316 rows
+/*!40000 ALTER TABLE `field` DISABLE KEYS */;
+INSERT INTO `field` (`id`, `column_name`, `comment`, `exists_method`, `field`, `find_all_by`, `find_by`, `input_type`, `length`, `list_show`, `match_type`, `model_id`, `nullable`, `type`, `validate`) VALUES
+	(1644, 'billid', '', NULL, 'billId', NULL, NULL, 'hidden', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1645, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1646, 'sho_compid', '', NULL, 'shoCompId', NULL, NULL, 'input', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1647, 'status', '1 有效\n            2 已回收\n            ', NULL, 'status', NULL, NULL, 'input', 5, b'1', 'none', 108, b'1', 'Long', NULL),
+	(1648, 'billfrom', '1 待发货\n            2 部分发货\n            3 已发货\n            4 自由打印', NULL, 'billFrom', NULL, NULL, 'input', 5, b'1', 'none', 108, b'1', 'Long', NULL),
+	(1649, 'logisticscompany', '', NULL, 'logisticsCompany', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1650, 'logisticsno', '', NULL, 'logisticsNo', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1651, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 108, b'1', 'String', NULL),
+	(1652, 'point', '', NULL, 'point', NULL, NULL, 'input', 100, b'1', 'none', 108, b'1', 'String', NULL),
+	(1653, 'getoperator', '', NULL, 'getOperator', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1654, 'getdate', '', NULL, 'getDate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1655, 'recycleoperator', '', NULL, 'recycleOperator', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1656, 'recycledate', '', NULL, 'recycleDate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1657, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1658, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1659, 'company', '', NULL, 'company', NULL, NULL, 'hidden', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1660, 'log_logisticsid', '', NULL, 'logLogisticsId', NULL, NULL, 'input', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1661, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1662, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 109, b'1', 'Long', NULL),
+	(1663, 'positiondata', '', NULL, 'positionData', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1664, 'encryptdata', '', NULL, 'encryptData', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1665, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 109, b'1', 'Date', NULL),
+	(1666, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 109, b'1', 'Date', NULL),
+	(1667, 'cainiaotempid', '', NULL, 'cainiaoTempId', NULL, NULL, 'input', 100, b'1', 'none', 109, b'1', 'String', NULL),
+	(1668, 'type', '', NULL, 'type', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1669, 'defaulttemp', '1 是\n            2 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 109, b'1', 'Long', NULL),
+	(1670, 'compid', '', NULL, 'compId', NULL, NULL, 'hidden', 19, b'1', 'none', 110, b'0', 'Long', NULL),
+	(1671, 'machinenum', '', NULL, 'machineNum', NULL, NULL, 'input', 5, b'1', 'none', 110, b'1', 'Long', NULL),
+	(1672, 'companyname', '', NULL, 'companyName', NULL, NULL, 'input', 256, b'1', 'none', 110, b'1', 'String', NULL),
+	(1673, 'invitationcode', '', NULL, 'invitationCode', NULL, NULL, 'input', 20, b'1', 'none', 110, b'1', 'String', NULL),
+	(1674, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 110, b'1', 'Date', NULL),
+	(1675, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 110, b'1', 'Date', NULL),
+	(1676, 'goodstempid', '', NULL, 'goodsTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1677, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1678, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1679, 'tempname', '', NULL, 'tempName', NULL, NULL, 'input', 50, b'1', 'none', 111, b'1', 'String', NULL),
+	(1680, 'postiondata', '', NULL, 'postionData', NULL, NULL, 'input', 3000, b'1', 'none', 111, b'1', 'String', NULL),
+	(1681, 'encrypostiondata', '', NULL, 'encryPostionData', NULL, NULL, 'input', 3000, b'1', 'none', 111, b'1', 'String', NULL),
+	(1682, 'img', '', NULL, 'img', NULL, NULL, 'input', 256, b'1', 'none', 111, b'1', 'String', NULL),
+	(1683, 'sysexpcreate', '', NULL, 'sysExpCreate', NULL, NULL, 'input', NULL, b'1', 'none', 111, b'1', 'Date', NULL),
+	(1684, 'sysexpmodify', '', NULL, 'sysExpModify', NULL, NULL, 'input', NULL, b'1', 'none', 111, b'1', 'Date', NULL),
+	(1685, 'expresstype', '如：debangkuaidi 、 longbangsudixin', NULL, 'expressType', NULL, NULL, 'input', 50, b'1', 'none', 111, b'1', 'String', NULL),
+	(1686, 'type', '1-标准\n            2-自定义', NULL, 'type', NULL, NULL, 'input', 5, b'1', 'none', 111, b'1', 'Long', NULL),
+	(1687, 'defaulttemp', '1 是\n            0 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 111, b'1', 'Long', NULL),
+	(1688, 'goodstempid', '', NULL, 'goodsTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 112, b'0', 'Long', NULL),
+	(1689, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 112, b'0', 'Long', NULL),
+	(1690, 'tempname2', '', NULL, 'tempName2', NULL, NULL, 'input', 50, b'1', 'none', 112, b'1', 'String', NULL),
+	(1691, 'abbrevid', '', NULL, 'abbrevId', NULL, NULL, 'hidden', 19, b'1', 'none', 113, b'0', 'Long', NULL),
+	(1692, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 113, b'0', 'Long', NULL),
+	(1693, 'numiid', '', NULL, 'numIid', NULL, NULL, 'input', 256, b'1', 'none', 113, b'1', 'String', NULL),
+	(1694, 'abbrev', '', NULL, 'abbrev', NULL, NULL, 'input', 256, b'1', 'none', 113, b'1', 'String', NULL),
+	(1695, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'hidden', 19, b'1', 'none', 114, b'0', 'Long', NULL),
+	(1696, 'platform', '1 淘宝', NULL, 'platform', NULL, NULL, 'input', 5, b'1', 'none', 114, b'1', 'Long', NULL),
+	(1697, 'company', '', NULL, 'company', NULL, NULL, 'input', 19, b'1', 'none', 114, b'1', 'Long', NULL),
+	(1698, 'code', '', NULL, 'code', NULL, NULL, 'input', 1024, b'1', 'none', 114, b'1', 'String', NULL),
+	(1699, 'syslogisticscreate', '1 是\n            0 否', NULL, 'sysLogisticsCreate', NULL, NULL, 'input', NULL, b'1', 'none', 114, b'1', 'Date', NULL),
+	(1700, 'syslogisticsmodify', '', NULL, 'sysLogisticsModify', NULL, NULL, 'input', NULL, b'1', 'none', 114, b'1', 'Date', NULL),
+	(1701, 'validrule', '', NULL, 'validRule', NULL, NULL, 'input', 256, b'1', 'none', 114, b'1', 'String', NULL),
+	(1702, 'ordernotetempid', '', NULL, 'orderNoteTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 115, b'0', 'Long', NULL),
+	(1703, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 115, b'0', 'Long', NULL),
+	(1704, 'name', '', NULL, 'name', NULL, NULL, 'input', 50, b'1', 'none', 115, b'1', 'String', NULL),
+	(1705, 'positiondata', '', NULL, 'positionData', NULL, NULL, 'input', 3000, b'1', 'none', 115, b'1', 'String', NULL),
+	(1706, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 115, b'1', 'Date', NULL),
+	(1707, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 115, b'1', 'Date', NULL),
+	(1708, 'defaulttemp', '1 默认\n            0 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 115, b'1', 'Long', NULL),
+	(1709, 'printlogid', '', NULL, 'printLogId', NULL, NULL, 'hidden', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1710, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1711, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1712, 'type', '1 普通快递单\n            2 电子面单\n            3 发货单\n            4  配货单\n            ', NULL, 'type', NULL, NULL, 'input', 5, b'1', 'none', 116, b'1', 'Long', NULL),
+	(1713, 'billfrom', '1 待发货\n            2 部分发货\n            3 已发货\n            4 自由打印', NULL, 'billFrom', NULL, NULL, 'input', 5, b'1', 'none', 116, b'1', 'Long', NULL),
+	(1714, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 116, b'1', 'String', NULL),
+	(1715, 'logisticscompany', '', NULL, 'logisticsCompany', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1716, 'logisticsno', '', NULL, 'logisticsNo', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1717, 'billfromshop', '', NULL, 'billFromShop', NULL, NULL, 'input', 256, b'1', 'none', 116, b'1', 'String', NULL),
+	(1718, 'getoperator', '', NULL, 'getOperator', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1719, 'printdate', '', NULL, 'printDate', NULL, NULL, 'input', NULL, b'1', 'none', 116, b'1', 'Date', NULL),
+	(1720, 'settingid', '', NULL, 'settingId', NULL, NULL, 'hidden', 19, b'1', 'none', 117, b'0', 'Long', NULL),
+	(1721, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 117, b'0', 'Long', NULL),
+	(1722, 'mergetrade', '1 是\n            0 否', NULL, 'mergeTrade', NULL, NULL, 'input', 5, b'1', 'none', 117, b'1', 'Long', NULL),
+	(1723, 'compid', '', NULL, 'compId', NULL, NULL, 'hidden', 19, b'1', 'none', 118, b'0', 'Long', NULL),
+	(1724, 'com_compid', '', NULL, 'comCompId', NULL, NULL, 'input', 19, b'1', 'none', 118, b'0', 'Long', NULL),
+	(1725, 'platform', '', NULL, 'platform', NULL, NULL, 'input', 5, b'1', 'none', 118, b'1', 'Long', NULL),
+	(1726, 'shopname', '', NULL, 'shopName', NULL, NULL, 'input', 1024, b'1', 'none', 118, b'1', 'String', NULL),
+	(1727, 'state', '', NULL, 'state', NULL, NULL, 'input', 50, b'1', 'none', 118, b'1', 'String', NULL),
+	(1728, 'city', '', NULL, 'city', NULL, NULL, 'input', 100, b'1', 'none', 118, b'1', 'String', NULL),
+	(1729, 'district', '', NULL, 'district', NULL, NULL, 'input', 100, b'1', 'none', 118, b'1', 'String', NULL),
+	(1730, 'address', '', NULL, 'address', NULL, NULL, 'input', 256, b'1', 'none', 118, b'1', 'String', NULL),
+	(1731, 'contacts', '', NULL, 'contacts', NULL, NULL, 'input', 20, b'1', 'none', 118, b'1', 'String', NULL),
+	(1732, 'phone', '', NULL, 'phone', NULL, NULL, 'input', 50, b'1', 'none', 118, b'1', 'String', NULL),
+	(1733, 'mobile', '', NULL, 'mobile', NULL, NULL, 'input', 20, b'1', 'none', 118, b'1', 'String', NULL),
+	(1734, 'zip', '', NULL, 'zip', NULL, NULL, 'input', 10, b'1', 'none', 118, b'1', 'String', NULL),
+	(1735, 'authaccid', '也用作1688会员id', NULL, 'authAccId', NULL, NULL, 'input', 30, b'1', 'none', 118, b'1', 'String', NULL),
+	(1736, 'authaccnick', '', NULL, 'authAccNick', NULL, NULL, 'input', 256, b'1', 'none', 118, b'1', 'String', NULL),
+	(1737, 'acctoken', '', NULL, 'accToken', NULL, NULL, 'input', 256, b'1', 'none', 118, b'1', 'String', NULL),
+	(1738, 'acctokenexpire', '', NULL, 'accTokenExpire', NULL, NULL, 'input', 19, b'1', 'none', 118, b'1', 'Long', NULL),
+	(1739, 'enddate', '', NULL, 'endDate', NULL, NULL, 'input', NULL, b'1', 'none', 118, b'1', 'Date', NULL),
+	(1740, 'sysexpcreate', '', NULL, 'sysExpCreate', NULL, NULL, 'input', NULL, b'1', 'none', 118, b'1', 'Date', NULL),
+	(1741, 'sysexpmodify', '', NULL, 'sysExpModify', NULL, NULL, 'input', NULL, b'1', 'none', 118, b'1', 'Date', NULL),
+	(1742, 'tradelastdate', '', NULL, 'tradeLastDate', NULL, NULL, 'input', NULL, b'1', 'none', 118, b'1', 'Date', NULL),
+	(1743, 'lastlogin', '', NULL, 'lastLogin', NULL, NULL, 'input', NULL, b'1', 'none', 118, b'1', 'Date', NULL),
+	(1744, 'lastloginname', '', NULL, 'lastLoginName', NULL, NULL, 'input', 50, b'1', 'none', 118, b'1', 'String', NULL),
+	(1745, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'hidden', 19, b'1', 'none', 119, b'0', 'Long', NULL),
+	(1746, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1747, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 119, b'0', 'Long', NULL),
+	(1748, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 119, b'1', 'String', NULL),
+	(1749, 'mergetid', '', NULL, 'mergeTid', NULL, NULL, 'input', 256, b'1', 'none', 119, b'1', 'String', NULL),
+	(1750, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'hidden', 19, b'1', 'none', 120, b'0', 'Long', NULL),
+	(1751, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 120, b'1', 'Long', NULL),
+	(1752, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 120, b'0', 'Long', NULL),
+	(1753, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 120, b'1', 'String', NULL),
+	(1754, 'mergetid', '', NULL, 'mergeTid', NULL, NULL, 'input', 256, b'1', 'none', 120, b'1', 'String', NULL),
+	(1755, 'orderid', '', NULL, 'orderId', NULL, NULL, 'hidden', 19, b'1', 'none', 121, b'0', 'Long', NULL),
+	(1756, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 121, b'0', 'Long', NULL),
+	(1757, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1758, 'picurl', '', NULL, 'picUrl', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1759, 'title', '', NULL, 'title', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1760, 'outerid', '', NULL, 'outerId', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1761, 'propsname', '', NULL, 'propsName', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1762, 'localouterid', '', NULL, 'localOuterId', NULL, NULL, 'input', 256, b'1', 'none', 121, b'1', 'String', NULL),
+	(1763, 'orderid', '', NULL, 'orderId', NULL, NULL, 'hidden', 19, b'1', 'none', 122, b'0', 'Long', NULL),
+	(1764, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 122, b'0', 'Long', NULL),
+	(1765, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1766, 'picurl', '', NULL, 'picUrl', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1767, 'title', '', NULL, 'title', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1768, 'outerid', '', NULL, 'outerId', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1769, 'propsname', '', NULL, 'propsName', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1770, 'localouterid', '', NULL, 'localOuterId', NULL, NULL, 'input', 256, b'1', 'none', 122, b'1', 'String', NULL),
+	(1771, 'orderid', '', NULL, 'orderId', NULL, NULL, 'hidden', 19, b'1', 'none', 123, b'0', 'Long', NULL),
+	(1772, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 123, b'0', 'Long', NULL),
+	(1773, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1774, 'picurl', '', NULL, 'picUrl', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1775, 'title', '', NULL, 'title', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1776, 'outerid', '', NULL, 'outerId', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1777, 'propsname', '', NULL, 'propsName', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1778, 'localouterid', '', NULL, 'localOuterId', NULL, NULL, 'input', 256, b'1', 'none', 123, b'1', 'String', NULL),
+	(1779, 'orderid', '', NULL, 'orderId', NULL, NULL, 'hidden', 19, b'1', 'none', 124, b'0', 'Long', NULL),
+	(1780, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 124, b'0', 'Long', NULL),
+	(1781, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1782, 'picurl', '', NULL, 'picUrl', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1783, 'title', '', NULL, 'title', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1784, 'outerid', '', NULL, 'outerId', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1785, 'propsname', '', NULL, 'propsName', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1786, 'localouterid', '', NULL, 'localOuterId', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1787, 'status', '订单状态（请关注此状态，如果为TRADE_CLOSED_BY_TAOBAO状态，则不要对此订单进行发货，切记啊！）。可选值:\n            \n                TRADE_NO_CREATE_PAY(没有创建支付宝交易)\n                WAIT_BUYER_PAY(等待买家付款)\n                WAIT_SELLER_SEND_GOODS(等待卖家发货,即:买家已付款)\n                WAIT_BUYER_CONFIRM_GOODS(等待买家确认收货,即:卖家已发货)\n                TRADE_BUYER_SIGNED(买家已签收,货到付款专用)\n                TRADE_FINISHED(交易成功)\n                TRADE_CLOSED(付款以后用户退款成功，交易自动关闭)\n                TRADE_CLOSED_BY_TAOBAO(付款以前，卖家或买家主动关闭交易)\n                PAY_PENDING(国际信用卡支付付款确认中)', NULL, 'status', NULL, NULL, 'input', 100, b'1', 'none', 124, b'1', 'String', NULL),
+	(1788, 'price', '', NULL, 'price', NULL, NULL, 'input', 12, b'1', 'none', 124, b'1', 'Double', NULL),
+	(1789, 'num', '', NULL, 'num', NULL, NULL, 'input', 10, b'1', 'none', 124, b'1', 'Long', NULL),
+	(1790, 'factfee', '', NULL, 'factFee', NULL, NULL, 'input', 12, b'1', 'none', 124, b'1', 'Double', NULL),
+	(1791, 'refundstatus', '主存-yes\n            详细存以下:\n            退款状态。退款状态。可选值 WAIT_SELLER_AGREE(买家已经申请退款，等待卖家同意) WAIT_BUYER_RETURN_GOODS(卖家已经同意退款，等待买家退货) WAIT_SELLER_CONFIRM_GOODS(买家已经退货，等待卖家确认收货) SELLER_REFUSE_BUYER(卖家拒绝退款) CLOSED(退款关闭) SUCCESS(退款成功)', NULL, 'refundStatus', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1792, 'numiid', '', NULL, 'numIid', NULL, NULL, 'input', 256, b'1', 'none', 124, b'1', 'String', NULL),
+	(1793, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 124, b'1', 'Date', NULL),
+	(1794, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 124, b'1', 'Date', NULL),
+	(1795, 'orderid', '', NULL, 'orderId', NULL, NULL, 'hidden', 19, b'1', 'none', 125, b'0', 'Long', NULL),
+	(1796, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 125, b'0', 'Long', NULL),
+	(1797, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1798, 'picurl', '', NULL, 'picUrl', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1799, 'title', '', NULL, 'title', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1800, 'outerid', '', NULL, 'outerId', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1801, 'propsname', '', NULL, 'propsName', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1802, 'localouterid', '', NULL, 'localOuterId', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1803, 'status', '订单状态（请关注此状态，如果为TRADE_CLOSED_BY_TAOBAO状态，则不要对此订单进行发货，切记啊！）。可选值:\n            \n                TRADE_NO_CREATE_PAY(没有创建支付宝交易)\n                WAIT_BUYER_PAY(等待买家付款)\n                WAIT_SELLER_SEND_GOODS(等待卖家发货,即:买家已付款)\n                WAIT_BUYER_CONFIRM_GOODS(等待买家确认收货,即:卖家已发货)\n                TRADE_BUYER_SIGNED(买家已签收,货到付款专用)\n                TRADE_FINISHED(交易成功)\n                TRADE_CLOSED(付款以后用户退款成功，交易自动关闭)\n                TRADE_CLOSED_BY_TAOBAO(付款以前，卖家或买家主动关闭交易)\n                PAY_PENDING(国际信用卡支付付款确认中)', NULL, 'status', NULL, NULL, 'input', 100, b'1', 'none', 125, b'1', 'String', NULL),
+	(1804, 'price', '', NULL, 'price', NULL, NULL, 'input', 12, b'1', 'none', 125, b'1', 'Double', NULL),
+	(1805, 'num', '', NULL, 'num', NULL, NULL, 'input', 10, b'1', 'none', 125, b'1', 'Long', NULL),
+	(1806, 'factfee', '', NULL, 'factFee', NULL, NULL, 'input', 12, b'1', 'none', 125, b'1', 'Double', NULL),
+	(1807, 'refundstatus', '主存-yes\n            详细存以下:\n            退款状态。退款状态。可选值 WAIT_SELLER_AGREE(买家已经申请退款，等待卖家同意) WAIT_BUYER_RETURN_GOODS(卖家已经同意退款，等待买家退货) WAIT_SELLER_CONFIRM_GOODS(买家已经退货，等待卖家确认收货) SELLER_REFUSE_BUYER(卖家拒绝退款) CLOSED(退款关闭) SUCCESS(退款成功)', NULL, 'refundStatus', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1808, 'numiid', '', NULL, 'numIid', NULL, NULL, 'input', 256, b'1', 'none', 125, b'1', 'String', NULL),
+	(1809, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 125, b'1', 'Date', NULL),
+	(1810, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 125, b'1', 'Date', NULL),
+	(1811, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'hidden', 19, b'1', 'none', 119, b'0', 'Long', NULL),
+	(1812, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1813, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 119, b'0', 'Long', NULL),
+	(1814, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 119, b'1', 'String', NULL),
+	(1815, 'mergetid', '', NULL, 'mergeTid', NULL, NULL, 'input', 256, b'1', 'none', 119, b'1', 'String', NULL),
+	(1816, 'status', '订单状态（请关注此状态，如果为TRADE_CLOSED_BY_TAOBAO状态，则不要对此订单进行发货，切记啊！）。可选值:\n            \n                TRADE_NO_CREATE_PAY(没有创建支付宝交易)\n                WAIT_BUYER_PAY(等待买家付款)\n                WAIT_SELLER_SEND_GOODS(等待卖家发货,即:买家已付款)\n                WAIT_BUYER_CONFIRM_GOODS(等待买家确认收货,即:卖家已发货)\n                TRADE_BUYER_SIGNED(买家已签收,货到付款专用)\n                TRADE_FINISHED(交易成功)\n                TRADE_CLOSED(付款以后用户退款成功，交易自动关闭)\n                TRADE_CLOSED_BY_TAOBAO(付款以前，卖家或买家主动关闭交易)\n                PAY_PENDING(国际信用卡支付付款确认中)', NULL, 'status', NULL, NULL, 'input', 100, b'1', 'none', 119, b'1', 'String', NULL),
+	(1817, 'tradetype', '参考淘宝API\n            \n            1：线上订单 \n            2：线下订单 \n            3：货到付款 \n            4：分销 \n            5：售后   \n            (预售 退款、虚拟、家装订单待定，天猫供销暂无)；', NULL, 'tradeType', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1818, 'ismerge', '1-正常\n            2-合母\n            3-合子\n            4-拆母\n            5-拆子', NULL, 'isMerge', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1819, 'buyermessage', '', NULL, 'buyerMessage', NULL, NULL, 'input', 500, b'1', 'none', 119, b'1', 'String', NULL),
+	(1820, 'sellermemo', '', NULL, 'sellerMemo', NULL, NULL, 'input', 500, b'1', 'none', 119, b'1', 'String', NULL),
+	(1821, 'sellerflag', '卖家备注旗帜（与淘宝网上订单的卖家备注旗帜对应，只有卖家才能查看该字段）红、黄、绿、蓝、紫 分别对应 1、2、3、4、5', NULL, 'sellerFlag', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1822, 'hasmm', '', NULL, 'hasMM', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1823, 'buyernick', '', NULL, 'buyerNick', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1824, 'receivermobile', '', NULL, 'receiverMobile', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1825, 'receiverphone', '', NULL, 'receiverPhone', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1826, 'receivername', '', NULL, 'receiverName', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1827, 'receiverstate', '', NULL, 'receiverState', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1828, 'receivercity', '', NULL, 'receiverCity', NULL, NULL, 'input', 100, b'1', 'none', 119, b'1', 'String', NULL),
+	(1829, 'receiverdistrict', '', NULL, 'receiverDistrict', NULL, NULL, 'input', 100, b'1', 'none', 119, b'1', 'String', NULL),
+	(1830, 'receivertown', '', NULL, 'receiverTown', NULL, NULL, 'input', 256, b'1', 'none', 119, b'1', 'String', NULL),
+	(1831, 'receiveraddress', '', NULL, 'receiverAddress', NULL, NULL, 'input', 512, b'1', 'none', 119, b'1', 'String', NULL),
+	(1832, 'receiverpostcode', '', NULL, 'receiverPostCode', NULL, NULL, 'input', 10, b'1', 'none', 119, b'1', 'String', NULL),
+	(1833, 'shippingtype', '创建交易时的物流方式（交易完成前，物流方式有可能改变，但系统里的这个字段一直不变）。可选值：free(卖家包邮),post(平邮),express(快递),ems(EMS),virtual(虚拟发货)，25(次日必达)，26(预约配送)。', NULL, 'shippingType', NULL, NULL, 'input', 20, b'1', 'none', 119, b'1', 'String', NULL),
+	(1834, 'payment', '', NULL, 'payment', NULL, NULL, 'input', 12, b'1', 'none', 119, b'1', 'Double', NULL),
+	(1835, 'discountfee', '', NULL, 'discountFee', NULL, NULL, 'input', 12, b'1', 'none', 119, b'1', 'Double', NULL),
+	(1836, 'postfee', '', NULL, 'postFee', NULL, NULL, 'input', 12, b'1', 'none', 119, b'1', 'Double', NULL),
+	(1837, 'expressno', '', NULL, 'expressNo', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1838, 'sendprintflag', '1 已打印\n            0 未打印', NULL, 'sendPrintFlag', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1839, 'ordernoteprintflag', '1 已打印\n            0 未打印', NULL, 'orderNotePrintFlag', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1840, 'expressprintflag', '1 已打印\n            0 未打印', NULL, 'expressPrintFlag', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1841, 'billprintflag', '1 已打印\n            0 未打印', NULL, 'billPrintFlag', NULL, NULL, 'input', 5, b'1', 'none', 119, b'1', 'Long', NULL),
+	(1842, 'created', '交易创建时间', NULL, 'created', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1843, 'finishtime', '', NULL, 'finishTime', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1844, 'paytime', '', NULL, 'payTime', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1845, 'senddate', '', NULL, 'sendDate', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1846, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1847, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 119, b'1', 'Date', NULL),
+	(1848, 'shortaddress', '', NULL, 'shortAddress', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1849, 'printconfig', '', NULL, 'printConfig', NULL, NULL, 'input', 500, b'1', 'none', 119, b'1', 'String', NULL),
+	(1850, 'packagecentername', '', NULL, 'packageCenterName', NULL, NULL, 'input', 200, b'1', 'none', 119, b'1', 'String', NULL),
+	(1851, 'packagecentercode', '', NULL, 'packageCenterCode', NULL, NULL, 'input', 50, b'1', 'none', 119, b'1', 'String', NULL),
+	(1852, 'packagecode', '本地包裹码=订单号_店铺ID_(合并1/原始2/)_子订单数\n            \n            //tid订单号第一个(订单号长度)_店铺ID_(1-正常2-合母3-合子4-拆母5-拆子)_子订单数\n            \n                 String pkId = tids[0]+"("+tids.length+")"+"_"+shopId.toString()+"_"+tJObj.getString("isMerge")+"_"+packageItemList.size();', NULL, 'packageCode', NULL, NULL, 'input', 300, b'1', 'none', 119, b'1', 'String', NULL),
+	(1853, 'elesendaddress', '', NULL, 'eleSendAddress', NULL, NULL, 'input', 500, b'1', 'none', 119, b'1', 'String', NULL),
+	(1854, 'refundstatus', '主存-yes\n            详细存以下:\n            退款状态。退款状态。可选值 WAIT_SELLER_AGREE(买家已经申请退款，等待卖家同意) WAIT_BUYER_RETURN_GOODS(卖家已经同意退款，等待买家退货) WAIT_SELLER_CONFIRM_GOODS(买家已经退货，等待卖家确认收货) SELLER_REFUSE_BUYER(卖家拒绝退款) CLOSED(退款关闭) SUCCESS(退款成功)', NULL, 'refundStatus', NULL, NULL, 'input', 256, b'1', 'none', 119, b'1', 'String', NULL),
+	(1855, 'credit_card_fee', '', NULL, 'creditCardFee', NULL, NULL, 'input', 12, b'1', 'none', 119, b'1', 'Double', NULL),
+	(1856, 'billtempid', '', NULL, 'billTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1857, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1858, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 109, b'0', 'Long', NULL),
+	(1859, 'positiondata', '', NULL, 'positionData', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1860, 'encryptdata', '', NULL, 'encryptData', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1861, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 109, b'1', 'Date', NULL),
+	(1862, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 109, b'1', 'Date', NULL),
+	(1863, 'cainiaotempid', '', NULL, 'cainiaoTempId', NULL, NULL, 'input', 100, b'1', 'none', 109, b'1', 'String', NULL),
+	(1864, 'type', '', NULL, 'type', NULL, NULL, 'input', 1024, b'1', 'none', 109, b'1', 'String', NULL),
+	(1865, 'defaulttemp', '1 是\r\n            2 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 109, b'1', 'Long', NULL),
+	(1866, 'billtempname', '', NULL, 'billTempName', NULL, NULL, 'input', 50, b'1', 'none', 109, b'1', 'String', NULL),
+	(1867, 'billid', '', NULL, 'billId', NULL, NULL, 'hidden', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1868, 'compid', '', NULL, 'compId', NULL, NULL, 'input', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1869, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 108, b'0', 'Long', NULL),
+	(1870, 'status', '1 有效\r\n            2 已回收\r\n            ', NULL, 'status', NULL, NULL, 'input', 5, b'1', 'none', 108, b'1', 'Long', NULL),
+	(1871, 'billfrom', '1 待发货\r\n            2 部分发货\r\n            3 已发货\r\n            4 自由打印', NULL, 'billFrom', NULL, NULL, 'input', 5, b'1', 'none', 108, b'1', 'Long', NULL),
+	(1872, 'logisticscompany', '', NULL, 'logisticsCompany', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1873, 'logisticsno', '', NULL, 'logisticsNo', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1874, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 108, b'1', 'String', NULL),
+	(1875, 'point', '', NULL, 'point', NULL, NULL, 'input', 100, b'1', 'none', 108, b'1', 'String', NULL),
+	(1876, 'getoperator', '', NULL, 'getOperator', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1877, 'getdate', '', NULL, 'getDate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1878, 'recycleoperator', '', NULL, 'recycleOperator', NULL, NULL, 'input', 50, b'1', 'none', 108, b'1', 'String', NULL),
+	(1879, 'recycledate', '', NULL, 'recycleDate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1880, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1881, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 108, b'1', 'Date', NULL),
+	(1882, 'goodstempid', '', NULL, 'goodsTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1883, 'logisticsid', '', NULL, 'logisticsId', NULL, NULL, 'input', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1884, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 111, b'0', 'Long', NULL),
+	(1885, 'tempname', '', NULL, 'tempName', NULL, NULL, 'input', 50, b'1', 'none', 111, b'1', 'String', NULL),
+	(1886, 'postiondata', '', NULL, 'postionData', NULL, NULL, 'input', 3000, b'1', 'none', 111, b'1', 'String', NULL),
+	(1887, 'encrypostiondata', '', NULL, 'encryPostionData', NULL, NULL, 'input', 3000, b'1', 'none', 111, b'1', 'String', NULL),
+	(1888, 'img', '', NULL, 'img', NULL, NULL, 'input', 256, b'1', 'none', 111, b'1', 'String', NULL),
+	(1889, 'sysexpcreate', '', NULL, 'sysExpCreate', NULL, NULL, 'input', NULL, b'1', 'none', 111, b'1', 'Date', NULL),
+	(1890, 'sysexpmodify', '', NULL, 'sysExpModify', NULL, NULL, 'input', NULL, b'1', 'none', 111, b'1', 'Date', NULL),
+	(1891, 'expresstype', '如：debangkuaidi 、 longbangsudixin', NULL, 'expressType', NULL, NULL, 'input', 50, b'1', 'none', 111, b'1', 'String', NULL),
+	(1892, 'type', '1-标准\r\n            2-自定义', NULL, 'type', NULL, NULL, 'input', 5, b'1', 'none', 111, b'1', 'Long', NULL),
+	(1893, 'defaulttemp', '1 是\r\n            0 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 111, b'1', 'Long', NULL),
+	(1894, 'abbrevid', '', NULL, 'abbrevId', NULL, NULL, 'hidden', 19, b'1', 'none', 113, b'0', 'Long', NULL),
+	(1895, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 113, b'0', 'Long', NULL),
+	(1896, 'numiid', '', NULL, 'numIid', NULL, NULL, 'input', 256, b'1', 'none', 113, b'1', 'String', NULL),
+	(1897, 'abbrev', '', NULL, 'abbrev', NULL, NULL, 'input', 256, b'1', 'none', 113, b'1', 'String', NULL),
+	(1898, 'goodstempid', '', NULL, 'goodsTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 112, b'0', 'Long', NULL),
+	(1899, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 112, b'0', 'Long', NULL),
+	(1900, 'tempname2', '', NULL, 'tempName2', NULL, NULL, 'input', 50, b'1', 'none', 112, b'1', 'String', NULL),
+	(1901, 'status', '订单状态（请关注此状态，如果为TRADE_CLOSED_BY_TAOBAO状态，则不要对此订单进行发货，切记啊！）。可选值:\r\n            \r\n                TRADE_NO_CREATE_PAY(没有创建支付宝交易)\r\n                WAIT_BUYER_PAY(等待买家付款)\r\n                WAIT_SELLER_SEND_GOODS(等待卖家发货,即:买家已付款)\r\n                WAIT_BUYER_CONFIRM_GOODS(等待买家确认收货,即:卖家已发货)\r\n                TRADE_BUYER_SIGNED(买家已签收,货到付款专用)\r\n                TRADE_FINISHED(交易成功)\r\n                TRADE_CLOSED(付款以后用户退款成功，交易自动关闭)\r\n                TRADE_CLOSED_BY_TAOBAO(付款以前，卖家或买家主动关闭交易)\r\n                PAY_PENDING(国际信用卡支付付款确认中)', NULL, 'status', NULL, NULL, 'input', 100, b'1', 'none', 112, b'1', 'String', NULL),
+	(1902, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 112, b'1', 'Date', NULL),
+	(1903, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 112, b'1', 'Date', NULL),
+	(1904, 'positiondata', '', NULL, 'positionData', NULL, NULL, 'input', 3000, b'1', 'none', 112, b'1', 'String', NULL),
+	(1905, 'defaulttemp', '', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 112, b'1', 'Long', NULL),
+	(1906, 'ordernotetempid', '', NULL, 'orderNoteTempId', NULL, NULL, 'hidden', 19, b'1', 'none', 115, b'0', 'Long', NULL),
+	(1907, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 115, b'0', 'Long', NULL),
+	(1908, 'name', '', NULL, 'name', NULL, NULL, 'input', 50, b'1', 'none', 115, b'1', 'String', NULL),
+	(1909, 'positiondata', '', NULL, 'positionData', NULL, NULL, 'input', 3000, b'1', 'none', 115, b'1', 'String', NULL),
+	(1910, 'syscreate', '', NULL, 'sysCreate', NULL, NULL, 'input', NULL, b'1', 'none', 115, b'1', 'Date', NULL),
+	(1911, 'sysmodify', '', NULL, 'sysModify', NULL, NULL, 'input', NULL, b'1', 'none', 115, b'1', 'Date', NULL),
+	(1912, 'defaulttemp', '1 默认\r\n            0 否', NULL, 'defaultTemp', NULL, NULL, 'input', 5, b'1', 'none', 115, b'1', 'Long', NULL),
+	(1913, 'printlogid', '', NULL, 'printLogId', NULL, NULL, 'hidden', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1914, 'tradeid', '', NULL, 'tradeId', NULL, NULL, 'input', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1915, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 116, b'0', 'Long', NULL),
+	(1916, 'type', '1 普通快递单\r\n            2 电子面单\r\n            3 发货单\r\n            4  配货单\r\n            ', NULL, 'type', NULL, NULL, 'input', 5, b'1', 'none', 116, b'1', 'Long', NULL),
+	(1917, 'billfrom', '1 待发货\r\n            2 部分发货\r\n            3 已发货\r\n            4 自由打印', NULL, 'billFrom', NULL, NULL, 'input', 5, b'1', 'none', 116, b'1', 'Long', NULL),
+	(1918, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 100, b'1', 'none', 116, b'1', 'String', NULL),
+	(1919, 'logisticscompany', '', NULL, 'logisticsCompany', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1920, 'logisticsno', '', NULL, 'logisticsNo', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1921, 'billfromshop', '', NULL, 'billFromShop', NULL, NULL, 'input', 256, b'1', 'none', 116, b'1', 'String', NULL),
+	(1922, 'getoperator', '', NULL, 'getOperator', NULL, NULL, 'input', 50, b'1', 'none', 116, b'1', 'String', NULL),
+	(1923, 'printdate', '', NULL, 'printDate', NULL, NULL, 'input', NULL, b'1', 'none', 116, b'1', 'Date', NULL),
+	(1924, 'settingid', '', NULL, 'settingId', NULL, NULL, 'hidden', 19, b'1', 'none', 117, b'0', 'Long', NULL),
+	(1925, 'shopid', '', NULL, 'shopId', NULL, NULL, 'input', 19, b'1', 'none', 117, b'0', 'Long', NULL),
+	(1926, 'mergetrade', '1 是\r\n            0 否', NULL, 'mergeTrade', NULL, NULL, 'input', 5, b'1', 'none', 117, b'1', 'Long', NULL),
+	(1927, 'sub_order_id', '', NULL, 'subOrderId', NULL, NULL, 'hidden', 19, b'1', 'none', 128, b'0', 'Long', NULL),
+	(1928, 'refund_create_time', '', NULL, 'refundCreateTime', NULL, NULL, 'input', NULL, b'1', 'none', 128, b'1', 'Date', NULL),
+	(1929, 'refund_status', '', NULL, 'refundStatus', NULL, NULL, 'input', 10, b'1', 'none', 128, b'1', 'Long', NULL),
+	(1930, 'supplier_nick', '', NULL, 'supplierNick', NULL, NULL, 'input', 32, b'1', 'none', 128, b'1', 'String', NULL),
+	(1931, 'distributor_nick', '', NULL, 'distributorNick', NULL, NULL, 'input', 32, b'1', 'none', 128, b'1', 'String', NULL),
+	(1932, 'modified', '', NULL, 'modified', NULL, NULL, 'input', NULL, b'1', 'none', 128, b'1', 'Date', NULL),
+	(1933, 'jdp_hashcode', '', NULL, 'jdpHashcode', NULL, NULL, 'input', 128, b'1', 'none', 128, b'1', 'String', NULL),
+	(1934, 'jdp_response', '', NULL, 'jdpResponse', NULL, NULL, 'input', 16777215, b'1', 'none', 128, b'1', 'String', NULL),
+	(1935, 'jdp_modified', '', NULL, 'jdpModified', NULL, NULL, 'input', NULL, b'1', 'none', 128, b'1', 'Date', NULL),
+	(1936, 'jdp_created', '', NULL, 'jdpCreated', NULL, NULL, 'input', NULL, b'1', 'none', 128, b'1', 'Date', NULL),
+	(1937, 'tid', '', NULL, 'tid', NULL, NULL, 'hidden', 19, b'1', 'none', 129, b'0', 'Long', NULL),
+	(1938, 'status', '', NULL, 'status', NULL, NULL, 'input', 64, b'1', 'none', 129, b'1', 'String', NULL),
+	(1939, 'type', '', NULL, 'type', NULL, NULL, 'input', 64, b'1', 'none', 129, b'1', 'String', NULL),
+	(1940, 'seller_nick', '', NULL, 'sellerNick', NULL, NULL, 'input', 32, b'1', 'none', 129, b'1', 'String', NULL),
+	(1941, 'buyer_nick', '', NULL, 'buyerNick', NULL, NULL, 'input', 255, b'1', 'none', 129, b'1', 'String', NULL),
+	(1942, 'created', '', NULL, 'created', NULL, NULL, 'input', NULL, b'1', 'none', 129, b'1', 'Date', NULL),
+	(1943, 'modified', '', NULL, 'modified', NULL, NULL, 'input', NULL, b'1', 'none', 129, b'1', 'Date', NULL),
+	(1944, 'jdp_hashcode', '', NULL, 'jdpHashcode', NULL, NULL, 'input', 128, b'1', 'none', 129, b'1', 'String', NULL),
+	(1945, 'jdp_response', '', NULL, 'jdpResponse', NULL, NULL, 'input', 16777215, b'1', 'none', 129, b'1', 'String', NULL),
+	(1946, 'jdp_created', '', NULL, 'jdpCreated', NULL, NULL, 'input', NULL, b'1', 'none', 129, b'1', 'Date', NULL),
+	(1947, 'jdp_modified', '', NULL, 'jdpModified', NULL, NULL, 'input', NULL, b'1', 'none', 129, b'1', 'Date', NULL),
+	(1948, 'refund_id', '', NULL, 'refundId', NULL, NULL, 'hidden', 19, b'1', 'none', 130, b'0', 'Long', NULL),
+	(1949, 'seller_nick', '', NULL, 'sellerNick', NULL, NULL, 'input', 32, b'1', 'none', 130, b'1', 'String', NULL),
+	(1950, 'buyer_nick', '', NULL, 'buyerNick', NULL, NULL, 'input', 255, b'1', 'none', 130, b'1', 'String', NULL),
+	(1951, 'status', '', NULL, 'status', NULL, NULL, 'input', 64, b'1', 'none', 130, b'1', 'String', NULL),
+	(1952, 'created', '', NULL, 'created', NULL, NULL, 'input', NULL, b'1', 'none', 130, b'1', 'Date', NULL),
+	(1953, 'tid', '', NULL, 'tid', NULL, NULL, 'input', 19, b'1', 'none', 130, b'1', 'Long', NULL),
+	(1954, 'oid', '', NULL, 'oid', NULL, NULL, 'input', 19, b'1', 'none', 130, b'1', 'Long', NULL),
+	(1955, 'modified', '', NULL, 'modified', NULL, NULL, 'input', NULL, b'1', 'none', 130, b'1', 'Date', NULL),
+	(1956, 'jdp_hashcode', '', NULL, 'jdpHashcode', NULL, NULL, 'input', 128, b'1', 'none', 130, b'1', 'String', NULL),
+	(1957, 'jdp_response', '', NULL, 'jdpResponse', NULL, NULL, 'input', 16777215, b'1', 'none', 130, b'1', 'String', NULL),
+	(1958, 'jdp_created', '', NULL, 'jdpCreated', NULL, NULL, 'input', NULL, b'1', 'none', 130, b'1', 'Date', NULL),
+	(1959, 'jdp_modified', '', NULL, 'jdpModified', NULL, NULL, 'input', NULL, b'1', 'none', 130, b'1', 'Date', NULL);
+/*!40000 ALTER TABLE `field` ENABLE KEYS */;
+
+-- 导出  表 project.goods 结构
+CREATE TABLE IF NOT EXISTS `goods` (
+  `good_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '商品主键',
+  `shop_id` bigint(20) DEFAULT NULL COMMENT '店铺主键',
+  `title` varchar(70) DEFAULT NULL COMMENT '商品名称',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '商品价格',
+  `description` text COMMENT '商品详情',
+  `num` bigint(20) DEFAULT NULL COMMENT '商品数量',
+  `weight` decimal(10,2) DEFAULT NULL COMMENT '商品重量',
+  `created` datetime DEFAULT NULL COMMENT '创建日期',
+  `modified` datetime DEFAULT NULL COMMENT '修改时间',
+  `status` varchar(10) DEFAULT NULL COMMENT '状态',
+  `code` varchar(32) DEFAULT NULL COMMENT '商品编码',
+  PRIMARY KEY (`good_id`),
+  KEY `FK_Reference_2` (`shop_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品';
+
+-- 正在导出表  project.goods 的数据：0 rows
+/*!40000 ALTER TABLE `goods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `goods` ENABLE KEYS */;
+
+-- 导出  表 project.model 结构
+CREATE TABLE IF NOT EXISTS `model` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `author` varchar(255) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `module_package` varchar(255) DEFAULT NULL,
+  `package_name` varchar(255) DEFAULT NULL,
+  `project_id` bigint(20) DEFAULT NULL,
+  `table_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  project.model 的数据：23 rows
+/*!40000 ALTER TABLE `model` DISABLE KEYS */;
+INSERT INTO `model` (`id`, `author`, `comment`, `description`, `model`, `module_package`, `package_name`, `project_id`, `table_name`) VALUES
+	(108, '', '电子面单', '', 'Bill', 'system', 'com.lcdt.shops.', 19, 'bill'),
+	(109, 'codegenerator', '电子面单模板', '', 'Billtemplete', 'system', 'com.lichendt.shops', 19, 'billtemplete'),
+	(110, '', '公司', '', 'Company', 'system', 'com.lichendt.shops', 19, 'company'),
+	(111, '', '快递模板', '', 'ExpressTemplet', 'system', 'com.lichendt.shops', 19, 'express_templet'),
+	(112, '', '发货单模板', '', 'GoodsTemplet', 'system', 'com.lichendt.shops', 19, 'goods_templet'),
+	(113, '', '商品简称', '', 'Goodsabbrev', 'system', 'com.lichendt.shops', 19, 'goodsabbrev'),
+	(114, '', '物流公司基本信息', '', 'Logistics', 'system', 'com.lichendt.shops', 19, 'logistics'),
+	(115, '', '配货单模板', '', 'Ordernote', 'system', 'com.lichendt.shops', 19, 'ordernote'),
+	(116, '', '1月打印日志（暂时保存全部）', '', 'PrintLog1', 'system', 'com.lichendt.shops', 19, 'print_log_1'),
+	(117, '', '店铺设置', '', 'Setting', 'system', 'com.lichendt.shops', 19, 'setting'),
+	(118, '', '店铺信息', '', 'Shop', 'system', 'com.lichendt.shops', 19, 'shop'),
+	(119, '', '订单', '', 'Trade', 'system', 'com.lichendt.shops', 19, 'trade'),
+	(120, '', '订单信息', '', 'Trade', 'system', 'com.lichendt.shops', 19, 'trade'),
+	(121, '', '订单详情', '', 'TradeItem', 'system', 'com.lichendt.shops', 19, 'trade_item'),
+	(122, '', '订单详情', '', 'TradeItem', 'system', 'com.lichendt.shops', 19, 'trade_item'),
+	(123, '', '订单详情', '', 'TradeItem', 'system', 'com.lichendt.shops', 19, 'trade_item'),
+	(124, '', '订单详情', '', 'TradeItem', 'system', 'com.lichendt.shops', 19, 'trade_item'),
+	(125, '', '订单详情', '', 'TradeItem', 'system', 'com.lichendt.shops', 19, 'trade_item'),
+	(126, '', '', '', '', '', '', 20, NULL),
+	(127, '', '', '', '', '', '', 20, NULL),
+	(128, 'codegenerator', '', '', 'JdpFxRefund', '', 'com.lcdt.shops', 20, 'jdp_fx_refund'),
+	(129, 'codegenerator', '淘宝订单', '', 'JdpTbTrade', 'async', 'com.lcdt.shops', 20, 'jdp_tb_trade'),
+	(130, 'codegenerator', '淘宝退款', '', 'JdpTbRefund', 'async', 'com.lcdt.shops', 20, 'jdp_tb_refund');
+/*!40000 ALTER TABLE `model` ENABLE KEYS */;
+
+-- 导出  表 project.project 结构
+CREATE TABLE IF NOT EXISTS `project` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `comment` varchar(2550) DEFAULT NULL,
+  `database_name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `group_package` varchar(255) DEFAULT NULL,
+  `module_package` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  `project_name` varchar(255) DEFAULT NULL,
+  `template` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+-- 正在导出表  project.project 的数据：3 rows
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` (`id`, `comment`, `database_name`, `description`, `group_package`, `module_package`, `path`, `project_name`, `template`) VALUES
+	(18, '', 'lcdt_warehouse_server', '普云店管家trade服务京东平台', 'com.puyun.shopmanage', 'com.puyun.shopmanage.entity', 'E:\\Work\\201806', 'trade_jd', ''),
+	(19, '', 'shops', '店管家​201809新版', 'com.lcdt.shops.system', 'system', 'E:\\works\\shops', 'shopsSystem', 'qnui'),
+	(20, '', 'sys_info', '', 'com.lcdt.shops', 'async', 'E:\\works\\shops\\ss', 'shops_async', 'qnui');
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+
+-- 导出  表 project.sku 结构
+CREATE TABLE IF NOT EXISTS `sku` (
+  `sku_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规格主键',
+  `good_id` bigint(20) DEFAULT NULL COMMENT '商品主键',
+  `attribute_name` varchar(20) DEFAULT NULL COMMENT '规格名称',
+  `properties` varchar(20) DEFAULT NULL COMMENT '规格属性',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
+  `weight` decimal(10,2) DEFAULT NULL COMMENT '重量',
+  `num` int(11) DEFAULT NULL COMMENT '数量',
+  PRIMARY KEY (`sku_id`),
+  KEY `FK_goods_sku` (`good_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='规格商品';
+
+-- 正在导出表  project.sku 的数据：0 rows
+/*!40000 ALTER TABLE `sku` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sku` ENABLE KEYS */;
+
+-- 导出  表 project.table 结构
+CREATE TABLE IF NOT EXISTS `table` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `table_name` varchar(255) DEFAULT NULL,
+  `table_schema` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 正在导出表  project.table 的数据：0 rows
+/*!40000 ALTER TABLE `table` DISABLE KEYS */;
+/*!40000 ALTER TABLE `table` ENABLE KEYS */;
+
+-- 导出  表 project.thumb 结构
+CREATE TABLE IF NOT EXISTS `thumb` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '图片主键',
+  `goods_id` bigint(20) DEFAULT NULL COMMENT '商品主键',
+  `img_url` varchar(128) DEFAULT NULL COMMENT '图片地址',
+  `order_num` int(11) DEFAULT NULL COMMENT '排序',
+  `type` int(11) DEFAULT NULL COMMENT '类型',
+  PRIMARY KEY (`id`),
+  KEY `FK_Reference_10` (`goods_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品图片';
+
+-- 正在导出表  project.thumb 的数据：0 rows
+/*!40000 ALTER TABLE `thumb` DISABLE KEYS */;
+/*!40000 ALTER TABLE `thumb` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
